@@ -112,7 +112,7 @@ class Reviews(models.Model):
     name = models.CharField(max_length=16, verbose_name='Имя пользователя')
     content = models.TextField(max_length=150, verbose_name='Содержания отзыва')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
-    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
     def __str__(self):
         return self.title
