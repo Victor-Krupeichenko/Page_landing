@@ -14,4 +14,5 @@ class Index(ListView):
         context['inspires'] = Inspires.objects.filter(is_published=True)
         context['lets'] = Lets.objects.filter(is_published=True)
         context['crm'] = Crm.objects.filter(is_published=True)
+        context['gallery'] = Galleries.objects.filter(is_published=True)
         return context
