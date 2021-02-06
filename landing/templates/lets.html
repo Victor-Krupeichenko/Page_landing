@@ -1,0 +1,19 @@
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/lets.css' %}">
+{% endblock %}
+
+<section class="section-lets text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% for item in lets %}
+                    <h3>{{ item.title }}</h3>
+                    <h4>{{ item.title_2 }}</h4>
+                    <p>{{ item.lets_content }}</p>
+                {% endfor %}
+                <p><a href="#" class="btn btn-pink">Read more</a></p>
+            </div>
+        </div>
+    </div>
+</section>
