@@ -83,7 +83,8 @@ class Galleries(models.Model):
     img_1_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='первое изображение')
     img_2_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='второе изображение')
     img_3_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='третье изображение')
-    img_4_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='четвертое изображение')
+    img_4_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True,
+                                    verbose_name='четвертое изображение')
     img_5_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='пятое изображение')
     img_6_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='шестое изображение')
     img_7_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='седьмое изображение')
@@ -102,3 +103,23 @@ class Galleries(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ReviewsHeader(models.Model):
+    title = models.CharField(max_length=16, verbose_name='Певый заголовок')
+    title_2 = models.CharField(max_length=16, verbose_name='Второй заголовок', blank=True,
+                               help_text='Это поле необязательно к заполнению')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return self.title
+
+
+class Reviews(models.Model):
+    name = models.CharField(max_length=11, verbose_name='Имя')
+    text = models.TextField(max_length=170, verbose_name='Отзыв')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return self.name
