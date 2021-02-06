@@ -15,5 +15,6 @@ class Index(ListView):
         context['lets'] = Lets.objects.filter(is_published=True)
         context['crm'] = Crm.objects.filter(is_published=True)
         context['gallery'] = Galleries.objects.filter(is_published=True)
-        context['reviews'] = Reviews.objects.filter(is_published=True)
+        context['reviews_header'] = ReviewsHeader.objects.filter(is_published=True)
+        context['reviews'] = Reviews.objects.filter(is_published=True)[:3]
         return context
