@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.forms import TextInput, Textarea
+from django.template.defaultfilters import truncatechars
 
 from .models import *
 
@@ -73,3 +74,15 @@ class GalleriesAdmin(admin.ModelAdmin):
                            'галереии снято отметка -> ОПУБЛИКОВАНО'
         }),
     )
+
+@admin.register(Reviews)
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = ['name', 'short_content', 'created_at', 'is_published']
+    list_editable = ['is_published']
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':80})}
+    }
+    def short_content(self, obj):
+        return truncatechars(obj.content, 30)
+
+    short_content.short_description = 'Содержания отзыва'
