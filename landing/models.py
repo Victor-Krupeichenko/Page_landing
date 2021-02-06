@@ -66,3 +66,39 @@ class Crm(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Galleries(models.Model):
+    title = models.CharField(max_length=32, verbose_name='Заголовок')
+    content = models.TextField(max_length=221, verbose_name='Текстовая часть', blank=True)
+    img_1_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='первое изображение')
+    img_2_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='второе изображение')
+    img_3_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='третья изображение')
+    img_4_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='четвёртое изображение')
+    img_5_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='пятое изображение')
+    img_6_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='шестое изображение')
+    img_7_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='седьмое изображение')
+    img_8_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='восьмое изображение')
+    img_9_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='девятое изображение')
+    img_1_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='первое изображение')
+    img_2_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='второе изображение')
+    img_3_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='третье изображение')
+    img_4_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='четвертое изображение')
+    img_5_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='пятое изображение')
+    img_6_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='шестое изображение')
+    img_7_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='седьмое изображение')
+    img_8_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='восьмое изображение')
+    img_9_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='девятое изображение')
+    img_1_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='первое изображение')
+    img_2_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='второе изображение')
+    img_3_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='третье изображение')
+    img_4_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='четвертое изображение')
+    img_5_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='пятое изображение')
+    img_6_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='шестое изображение')
+    img_7_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='седьмое изображение')
+    img_8_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='восьмое изображение')
+    img_9_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='девятое изображение')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return self.title
