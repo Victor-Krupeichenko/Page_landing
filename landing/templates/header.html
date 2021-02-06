@@ -1,0 +1,18 @@
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+{% endblock %}
+<section class="main-header">
+    {% include 'landing/inc/_nav.html' %}
+    <div class="main-header-text text-center">
+        {% for item in object_list %}
+            <h3>{{ item.title }}</h3>
+            <h4>{{ item.title_2 }}</h4>
+            <p>{{ item.content }}</p>
+        {% endfor %}
+        <div class="main-header-button text-center">
+            <button type="button" class="btn btn-pink rounded-pill"><a href="#">Read more</a></button>
+            <button type="button" class="btn btn-violet rounded-pill"><a href="#">Contact</a></button>
+        </div>
+    </div>
+</section>
