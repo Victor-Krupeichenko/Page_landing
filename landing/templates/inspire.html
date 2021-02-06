@@ -1,0 +1,86 @@
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/inspire.css' %}">
+{% endblock %}
+
+<section class="section-inspire">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% for item in inspires %}
+                    <h3>{{ item.title }}</h3>
+                    <h4>{{ item.title_2 }}</h4>
+                    <ul class="nav nav-pills" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="Django-tab" data-toggle="tab" href="#Django" role="tab"
+                               aria-controls="Django" aria-selected="true">Django</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="Bootstrap-tab" data-toggle="tab" href="#Bootstrap" role="tab"
+                               aria-controls="Bootstrap" aria-selected="false">Bootstrap</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="CSS-tab" data-toggle="tab" href="#CSS" role="tab"
+                               aria-controls="CSS" aria-selected="false">CSS</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="Django" role="tabpanel"
+                             aria-labelledby="Django-tab">
+                            <p class="content-item">{{ item.django_content }}</p>
+                            <p><a href="#" class="btn btn-shadow btn-pink">Read more</a></p>
+                            {% if item.django_img %}
+                                <a href="#"><img class="src" src="{{ item.django_img.url }}" alt="" width="282"
+                                                 height="281"></a>
+                            {% else %}
+                                <a href="#"><img class="src" src="../static/images/django.png" alt=""></a>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade" id="Bootstrap" role="tabpanel" aria-labelledby="Bootstrap-tab">
+                            <p class="content-item">{{ item.bootstrap_content }}</p>
+                            <p><a href="#" class="btn btn-shadow btn-pink">Read more</a></p>
+                            {% if item.bootstrap_img %}
+                                <a href="#"><img class="src" src="{{ item.bootstrap_img.url }}" alt="" width="282"
+                                                 height="281"></a>
+                            {% else %}
+                                <a href="#"><img class="src" src="../static/images/bootstrap.png" alt=""></a>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade" id="CSS" role="tabpanel" aria-labelledby="CSS-tab">
+                            <p class="content-item">{{ item.css_content }}</p>
+                            <p><a href="#" class="btn btn-shadow btn-pink">Read more</a></p>
+                            {% if item.css_img %}
+                                <a href="#"><img class="src" src="{{ item.css_img.url }}" alt="" width="282"
+                                                 height="281"></a>
+                            {% else %}
+                                <a href="#"><img class="src" src="../static/images/css.png" alt=""></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="container">
+                        <div class="row text-center design">
+                            <div class="col-md-4 progress-item">
+                                <a href="#"><img class="design" src="../static/images/Shap.png" alt="">
+                                    <div class="num">{{ item.attainment_django_num }}+</div>
+                                    <h4>{{ item.attainment_django_title }}</h4>
+                                    <p>{{ item.attainment_django_content }}</p></a>
+                            </div>
+                            <div class="col-md-4 progress-item">
+                                <a href="#"><img class="design" src="../static/images/Shap.png" alt="">
+                                    <div class="num">{{ item.attainment_bootstrap_num }}+</div>
+                                    <h4>{{ item.attainment_bootstrap_title }}</h4>
+                                    <p>{{ item.attainment_bootstrap_content }}</p></a>
+                            </div>
+                            <div class="col-md-4 progress-item">
+                                <a href="#"><img class="design" src="../static/images/Shap.png" alt="">
+                                    <div class="num">{{ item.attainment_css_num }}+</div>
+                                    <h4>{{ item.attainment_css_title }}</h4>
+                                    <p>{{ item.attainment_css_content }}</p></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+</section>
