@@ -84,7 +84,7 @@ class ReviewsHeader(admin.ModelAdmin):
 
 @admin.register(Reviews)
 class ReviewsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'short_text', 'is_published']
+    list_display = ['name', 'short_text', 'created_at','is_published']
     list_editable = ['is_published']
     ordering = ['-created_at']
     formfield_overrides = {
