@@ -1,0 +1,42 @@
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/plyr.css' %}">
+    <link rel="stylesheet" href="{% static 'css/crm.css' %}">
+{% endblock %}
+
+<section class="section-crm">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 crm text-left">
+                {% for item in crm %}
+                    <h3>{{ item.title }}</h3>
+                    <h4>{{ item.title_2 }}</h4>
+                    <p class="crm-content">{{ item.content }}</p>
+                    <div class="row">
+                        <div class="col-md-6 crm-left">
+                            <img src="../static/images/crmDjango.png" alt="">
+                            <h5>{{ item.section_1 }}</h5>
+                            <p class="crm-col">{{ item.section_content }}</p>
+                            <p><a href="#" class="btn btn-pink">Read more</a></p>
+                        </div>
+                        <div class="col-md-6 crm-right">
+                            <img src="../static/images/crmProtection.png" alt="">
+                            <h5>{{ item.section_2 }}</h5>
+                            <p class="crm-col">{{ item.section_2_content }}</p>
+                            <p><a href="#" class="btn btn-pink">Read more</a></p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-5 video-block">
+                    <div class="plyr__video-embed js-player" id="player">
+                        {{ item.video_1|safe }}
+                    </div>
+                    <div class="plyr__video-embed js-player two-player" id="player"
+                         onclick="players[1].play(click.pause())">
+                        {{ item.video_2|safe }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
