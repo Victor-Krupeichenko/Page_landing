@@ -1,19 +1,20 @@
 /**{*/
 /*    border: 2px solid #f7145f;*/
 /*}*/
-.section-reviews{
+.section-reviews {
     background: url("../images/carusel.png") no-repeat center;
     background-size: cover;
     padding-bottom: 0;
     padding-top: 15px;
 }
 
-.section-reviews .carousel-caption{
+.section-reviews .carousel-caption {
     top: 5%;
     text-align: left;
 
 }
-.section-reviews .carousel-caption h3{
+
+.section-reviews .carousel-caption h3 {
     font-family: 'Palatino Linotype', sans-serif;
     font-style: italic;
     font-size: 40px;
@@ -21,14 +22,15 @@
     margin-bottom: 16px;
 }
 
-.section-reviews .carousel-caption h4{
+.section-reviews .carousel-caption h4 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 30px;
     color: #ffffff;
     margin-bottom: 5%;
 }
-.section-reviews .blockquote p{
+
+.section-reviews .blockquote p {
     font-family: 'Montserrat', sans-serif;
     font-size: 19px;
     color: #ffffff;
@@ -36,18 +38,20 @@
     margin-top: 12%;
     min-height: 180px;
 }
-.section-reviews .blockquote footer{
+
+.section-reviews .blockquote footer {
     margin-top: 23%;
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     color: #ffffff;
     margin-left: 12%;
 }
-.section-reviews .blockquote footer::before{
+
+.section-reviews .blockquote footer::before {
     content: "";
 }
 
-.section-reviews .blockquote p::before{
+.section-reviews .blockquote p::before {
     content: '\201C';
     float: left;
     font-size: 150px;
@@ -58,29 +62,47 @@
     top: 18%;
     left: -5%;
 }
-.section-reviews .images img{
+
+.section-reviews .images img {
     margin-top: 10%;
     height: 97%;
 }
 
-.section-reviews .btn-reviews-one{
+.section-reviews .btn-reviews-one {
     margin-left: 39.5%;
     margin-right: 5%;
 }
-.section-reviews .btn{
+
+.section-reviews .btn {
     font-size: 14px;
     margin-top: .5%;
     margin-bottom: .9%;
     color: #ffffff;
     text-transform: uppercase;
     text-decoration: none;
-    background-color: #393939;
+    background: linear-gradient(225deg, rgb(59, 59, 59) 45%, rgb(244, 34, 103) 78%);
     border-radius: 25px;
     padding: 10px 15px;
-    box-shadow: 0 5px 16px #f42267;
+    box-shadow: 5px 0 10px #f42267;
     transition: all .3s;
 }
-.section-reviews .btn:hover{
+
+.section-reviews .btn-reviews-one:hover {
     transform: scale(.8);
-    box-shadow: 0 2.5px 16px #f21359;
+    background: linear-gradient(45deg, rgb(59, 59, 59) 45%, rgb(244, 34, 103) 78%);
+    /*box-shadow: 0 2.5px 16px #f21359;*/
+    box-shadow: -5px 0 10px #f42267;
+}
+
+.section-reviews .btn-reviews-two{
+    background: linear-gradient(135deg, rgb(59, 59, 59) 45%, rgb(244, 34, 103) 78%);
+
+    box-shadow: -5px 0 10px #f42267;
+
+}
+.section-reviews .btn-reviews-two:hover {
+    transform: scale(.8);
+    background: linear-gradient(45deg, rgb(59, 59, 59) 45%, rgb(244, 34, 103) 78%);
+    /*box-shadow: 0 2.5px 16px #f21359;*/
+    box-shadow: 5px 0 10px #f42267;
 }
