@@ -75,14 +75,23 @@ class GalleriesAdmin(admin.ModelAdmin):
         }),
     )
 
+
+@admin.register(ReviewsHeader)
+class ReviewsHeader(admin.ModelAdmin):
+    list_display = ['title', 'title_2', 'is_published']
+    list_editable = ['is_published']
+
+
 @admin.register(Reviews)
 class ReviewsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'short_content', 'created_at', 'is_published']
+    list_display = ['name', 'short_text', 'is_published']
     list_editable = ['is_published']
+    ordering = ['-created_at']
     formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':80})}
+        models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
-    def short_content(self, obj):
-        return truncatechars(obj.content, 30)
 
-    short_content.short_description = 'Содержания отзыва'
+    def short_text(self, obj):
+        return truncatechars(obj.text, 30)
+
+    short_text.short_description = 'Отзыв'
