@@ -1,0 +1,70 @@
+.section-form {
+    padding-top: 3%;
+}
+
+.section-form {
+    background: url("../images/Shape_form.png"), no-repeat, center;
+    background-size: cover;
+}
+
+.section-form h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2%;
+}
+
+.section-form h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2%;
+}
+
+.section-form p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    margin-bottom: 1.5%;
+}
+
+.section-form .form-control {
+    height: 45px;
+    background-color: rgba(255, 255, 255, .35);
+    border: none;
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.section-form .form-control::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.section-form .form-control:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .35);
+}
+
+.section-form .btn{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #7b33f9;
+    padding: 10px 25px;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 25px;
+    box-shadow: 0 15px 16px #550ad8;
+    transition: all .2s;
+}
+
+.section-form .btn:hover{
+    transform: scale(.8);
+    box-shadow: 0 7.5px 16px #550ad8;
+}
