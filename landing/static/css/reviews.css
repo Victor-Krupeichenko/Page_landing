@@ -4,7 +4,6 @@
 .section-reviews {
     background: url("../images/carusel.png") no-repeat center;
     background-size: cover;
-    padding-bottom: 0;
     padding-top: 15px;
 }
 
@@ -76,7 +75,7 @@
 .section-reviews .btn {
     font-size: 14px;
     margin-top: .5%;
-    margin-bottom: .9%;
+    margin-bottom: 1%;
     color: #ffffff;
     text-transform: uppercase;
     text-decoration: none;
