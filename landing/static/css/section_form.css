@@ -50,7 +50,7 @@
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .35);
 }
 
-.section-form .btn{
+.section-form .btn {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 600;
@@ -64,7 +64,7 @@
     transition: all .2s;
 }
 
-.section-form .btn:hover{
+.section-form .btn:hover {
     transform: scale(.8);
-    box-shadow: 0 7.5px 16px #550ad8;
+    box-shadow: 0 7px 16px #550ad8;
 }
