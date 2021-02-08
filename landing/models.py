@@ -128,3 +128,24 @@ class Reviews(models.Model):
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
         ordering = ['-created_at']
+
+
+class FormText(models.Model):
+    title = models.CharField(max_length=15, verbose_name='Первый заголовок')
+    title2 = models.CharField(max_length=32, verbose_name='Второй заголовок', blank=True,
+                              help_text='Это поле необязательно к заполнению')
+    content = models.TextField(max_length=200, verbose_name='Контентная часть', blank=True)
+    is_published = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+class FormQuestions(models.Model):
+    questions = models.TextField(max_length=170, verbose_name='Вопрос')
+    name = models.CharField(max_length=30, verbose_name='Имя')
+    email = models.EmailField(verbose_name='Email')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
+
+    def __str__(self):
+        return self.questions
