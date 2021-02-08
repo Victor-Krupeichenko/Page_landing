@@ -8,24 +8,26 @@
 }
 
 .section-form h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Palatino Linotype', sans-serif;
     font-size: 50px;
+    font-style: italic;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 
 .section-form h5 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Palatino Linotype', sans-serif;
     font-size: 30px;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 
 .section-form p {
     font-family: 'Montserrat', sans-serif;
     font-size: 17px;
+    font-style: italic;
     color: #ffffff;
     margin-bottom: 1.5%;
 }
@@ -34,15 +36,21 @@
     height: 45px;
     background-color: rgba(255, 255, 255, .35);
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #ffffff;
     padding-left: 40px;
     padding-right: 40px;
 }
 
+.section-form .form-group {
+    margin-top: -2%;
+
+}
+
 .section-form .form-control::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
+    font-weight: 600;
     color: #ffffff;
 }
 
