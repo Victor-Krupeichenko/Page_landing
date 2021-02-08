@@ -8,14 +8,37 @@
         <div class="row">
             <div class="col-md-12">
                 {% for item in form_text %}
-                <h4>{{ item.title }}</h4>
-                <h5>{{ item.title2 }}</h5>
-                <p>{{ item.content }}</p>
+                    <h4>{{ item.title }}</h4>
+                    <h5>{{ item.title2 }}</h5>
+                    <p>{{ item.content }}</p>
                 {% endfor %}
                 <form action="{% url 'home' %}" method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn mb-5">Отправить</button>
+                    {{ form.non.field.errors }}
+                    <div class="form-group">
+                        <label for="{{ for.questions.id_for_label }}"></label>
+                        {{ form.questions }}
+                        <div class="invalid-feedback">
+                             {{ form.questions.errors }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.name.id_for_label }}"></label>
+                            {{ form.name }}
+                            <div class="invalid-feedback">
+                             {{ form.name.errors }}
+                        </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.email.id_for_label }}"></label>
+                            {{ form.email }}
+                            <div class="invalid-feedback">
+                             {{ form.email.errors }}
+                        </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn mb-5">Спросить</button>
                 </form>
             </div>
         </div>
