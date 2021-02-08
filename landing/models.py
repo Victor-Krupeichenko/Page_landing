@@ -142,7 +142,7 @@ class FormText(models.Model):
 
 
 class FormQuestions(models.Model):
-    questions = models.TextField(max_length=170, verbose_name='Вопрос')
+    questions = models.CharField(max_length=150, verbose_name='Вопрос')
     name = models.CharField(max_length=30, verbose_name='Имя')
     email = models.EmailField(verbose_name='Email')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
