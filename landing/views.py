@@ -1,8 +1,9 @@
 from django.views.generic import ListView
 from .models import *
+from .utils import MyFormLanding
 
 
-class Index(ListView):
+class Index(MyFormLanding, ListView):
     model = Headers
     template_name = 'index.html'
 
@@ -19,4 +20,5 @@ class Index(ListView):
         context['reviews1'] = Reviews.objects.filter(is_published=True)[:1]
         context['reviews2'] = Reviews.objects.filter(is_published=True)[1:2]
         context['reviews3'] = Reviews.objects.filter(is_published=True)[2:3]
+        context['form_text'] = FormText.objects.filter(is_published=True)
         return context
