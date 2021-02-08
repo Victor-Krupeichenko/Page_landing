@@ -7,26 +7,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4>Need Help?</h4>
-                <h5>Don't Forget to Contact With Us</h5>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum
-                    ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus
-                    . </p>
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="inputAddress"></label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Question">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputAddress2"></label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Name">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4"></label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                        </div>
-                    </div>
+                {% for item in form_text %}
+                <h4>{{ item.title }}</h4>
+                <h5>{{ item.title2 }}</h5>
+                <p>{{ item.content }}</p>
+                {% endfor %}
+                <form action="{% url 'home' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
                     <button type="submit" class="btn mb-5">Отправить</button>
                 </form>
             </div>
