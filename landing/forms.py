@@ -7,7 +7,7 @@ class FormQuestionsViews(forms.ModelForm):
         model = FormQuestions
         fields = ['questions', 'name', 'email']
         widgets = {
-            'questions': forms.Textarea(attrs={'class': 'form-control'}),
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'})
+            'questions': forms.TextInput(attrs={'class': 'form-control','placeholder':'Вопрос:'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Имя:'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'Email:'})
         }
