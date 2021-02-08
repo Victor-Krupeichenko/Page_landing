@@ -5,8 +5,8 @@ from django.template.defaultfilters import truncatechars
 from .models import *
 
 
-@admin.register(Headers)
-class HeadersAdmin(admin.ModelAdmin):
+@admin.register(Headers, Lets)
+class HeadersLetsAdmin(admin.ModelAdmin):
     list_display = ['title', 'is_published']
     list_editable = ['is_published']
     formfield_overrides = {
@@ -25,14 +25,14 @@ class InspiresAdmin(admin.ModelAdmin):
     }
 
 
-@admin.register(Lets)
-class LetsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'is_published']
-    list_editable = ['is_published']
-    formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size': 50})},
-        models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
-    }
+# @admin.register(Lets)
+# class LetsAdmin(admin.ModelAdmin):
+#     list_display = ['title', 'is_published']
+#     list_editable = ['is_published']
+#     formfield_overrides = {
+#         models.CharField: {'widget': TextInput(attrs={'size': 50})},
+#         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
+#     }
 
 
 @admin.register(Crm)
@@ -84,7 +84,7 @@ class ReviewsHeader(admin.ModelAdmin):
 
 @admin.register(Reviews)
 class ReviewsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'short_text', 'created_at','is_published']
+    list_display = ['name', 'short_text', 'created_at', 'is_published']
     list_editable = ['is_published']
     ordering = ['-created_at']
     formfield_overrides = {
@@ -95,3 +95,19 @@ class ReviewsAdmin(admin.ModelAdmin):
         return truncatechars(obj.text, 30)
 
     short_text.short_description = 'Отзыв'
+
+
+@admin.register(FormText)
+class FormTextAdmin(admin.ModelAdmin):
+    list_display = ['title', 'title2', 'short_content', 'is_published']
+    list_editable = ['is_published']
+
+    def short_content(self, obj):
+        return truncatechars(obj.content, 30)
+
+    short_content.short_description = 'Контент'
+
+
+@admin.register(FormQuestions)
+class FormQuestionsAdmin(admin.ModelAdmin):
+    list_display = ['name', 'questions', 'email', 'created_at']
