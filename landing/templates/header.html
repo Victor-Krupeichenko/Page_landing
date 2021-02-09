@@ -2,8 +2,8 @@
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
 {% endblock %}
-<section class="main-header">
-    {% include 'landing/inc/_nav.html' %}
+<header class="main-header">
+{% include 'landing/inc/_nav.html' %}
     <div class="main-header-text text-center">
         {% for item in object_list %}
             <h3>{{ item.title }}</h3>
@@ -15,4 +15,4 @@
             <button type="button" class="btn btn-violet rounded-pill"><a href="#">Contact</a></button>
         </div>
     </div>
-</section>
+</header>
