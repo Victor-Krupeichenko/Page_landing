@@ -21,4 +21,5 @@ class Index(MyFormLanding, ListView):
         context['reviews2'] = Reviews.objects.filter(is_published=True)[1:2]
         context['reviews3'] = Reviews.objects.filter(is_published=True)[2:3]
         context['form_text'] = FormText.objects.filter(is_published=True)
+        context['footer_img'] = FooterImages.objects.filter(is_published=True)
         return context
