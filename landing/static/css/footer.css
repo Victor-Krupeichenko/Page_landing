@@ -1,0 +1,134 @@
+.section-footer {
+    background: url("../images/World Map.png") no-repeat, center;
+    background-size: cover;
+    padding-top: 100px;
+}
+
+.section-footer h5 {
+    font-family: 'Palatino Linotype', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #4b2d7f;
+    margin-bottom: 25px;
+    transition: all .3s;
+}
+
+.section-footer h5:hover {
+    color: #f7145f;
+}
+
+.section-footer .item-list ul li a {
+    font-family: 'Palatino Linotype', sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 3%;
+    color: #f7145f;
+}
+
+.section-footer .item-list ul li a::after {
+    content: ' ';
+    display: block;
+    width: 26%;
+    background-color: #f7145f;;
+    height: 1px;
+    transform: scale(0);
+    transition: all .3s;
+}
+
+.section-footer .item-list ul li a:hover::after {
+    transform: scale(1)
+}
+
+
+.section-footer .item-list .admin-footer {
+    color: #7b33f9;
+}
+
+.section-footer .item-list .admin-footer::after {
+    content: ' ';
+    display: block;
+    width: 37%;
+    background-color: #7b33f9;
+    height: 1px;
+    transform: scale(0);
+    transition: all .3s;
+}
+
+.section-footer .item-list .admin-footer:hover::after {
+    transform: scale(1)
+}
+
+
+.section-footer .item-list li {
+    padding-bottom: 15px;
+    list-style: none;
+}
+
+.section-footer .footer-img img {
+    box-shadow: 0 10px 16px #f7145f;
+    border-radius: 15px;
+    transition: all .3s;
+}
+
+.section-footer .footer-img img:hover {
+    transform: scale(.9);
+    box-shadow: 0 5px 8px #dd1759;
+}
+
+.section-footer .footer-img .img2 {
+    padding-left: 4%;
+}
+
+.section-footer .footer-img .img3 {
+    left: 25%;
+    margin-top: 2%;
+}
+
+.section-footer .copyright-item ul {
+    margin-top: 20%;
+    margin-left: 14%;
+    font-size: 16px;
+    margin-bottom: 3%;
+    padding-left: 2%;
+}
+.section-footer .copyright-item ul li a{
+    text-decoration: none;
+    color: #3b3b3b;
+    font-family: 'Palatino Linotype', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+.section-footer .copyright-item ul li a::after{
+    content: ' ';
+    display: block;
+    width: 100%;
+    background-color: #f7145f;;
+    height: 1px;
+    transform: scale(0);
+    transition: all .3s;
+}
+.section-footer .copyright-item ul li a:hover::after{
+    transform: scale(1);
+}
+.section-footer .copyright-item ul li a:hover{
+    color: #7b33f9;
+}
+.section-footer .copyright-item  a::before{
+    content: '\00B7';
+    font-size: 30px;
+    margin-right: 2px;
+    margin-top: 10px;
+}
+@media only screen and (max-width: 992px){
+    .section-footer .copyright-item ul{
+        margin-left: 0;
+        margin-bottom: 1%;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .section-footer .footer-img img {
+        transform: scale(.7);
+    }
+}
