@@ -6,7 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 justify-content-center item-list">
-                <h5>Компания</h5>
+                {% for item in footer_img %}
+                <h5>{{ item.title }}</h5>
                 <ul>
                     <li><a class="admin-footer" href="{% url 'admin:index' %}">Администратор</a></li>
                     <li><a class="blog-footer" href="#">Блог</a></li>
@@ -17,7 +18,6 @@
             </div>
             <div class="col-md-6 footer-img">
                 <div class="row photo">
-                    {% for item in footer_img %}
                         {% if item.img1 %}
                             <div class="col-6 img1">
                                 <a href="#"><img src="{{ item.img1.url }}" alt="изображение1" width="170"></a>
