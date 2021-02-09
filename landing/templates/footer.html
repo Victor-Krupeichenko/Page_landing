@@ -1,0 +1,40 @@
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+<footer class="section-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 justify-content-center">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 footer-img">
+                <div class="row photo">
+                    {% for item in footer_img %}
+                    {% if item.img1 %}
+                    <div class="col-6 img1">
+                        <img src="{{ item.img1.url }}" alt="изображение1" width="170">
+                    </div>
+                     {% endif %}
+                        {% if item.img2 %}
+                    <div class="col-6 img2">
+                        <img src="{{ item.img2.url }}" alt="изображение1" width="170">
+                    </div>
+                        {% endif %}
+                        {% if item.img3 %}
+                    <div class="col-6 img3">
+                        <img src="{{ item.img3.url }}" alt="изображение1" width="170">
+                    </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
