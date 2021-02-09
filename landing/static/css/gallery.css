@@ -44,3 +44,8 @@
     transform: scale(1.1);
     box-shadow: 0 14px 30px -15px rgba(0, 0 , 0, .75);
 }
+@media only screen and (max-width : 546px){
+    .section-crm h3 {
+        font-size: 30px;
+    }
+}
