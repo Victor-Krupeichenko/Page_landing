@@ -5,34 +5,50 @@
 <footer class="section-footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 justify-content-center">
-                <h5>Company</h5>
+            <div class="col-md-6 justify-content-center item-list">
+                <h5>Компания</h5>
                 <ul>
-                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">News</a></li>
+                    <li><a class="admin-footer" href="{% url 'admin:index' %}">Администратор</a></li>
+                    <li><a class="blog-footer" href="#">Блог</a></li>
+                    <li><a class="contact-footer" href="#">Контакты</a></li>
+                    <li><a class="news-footer" href="#">Новости</a></li>
+                    <li><a class="reviews-footer" href="#">Отзывы</a></li>
                 </ul>
             </div>
             <div class="col-md-6 footer-img">
                 <div class="row photo">
                     {% for item in footer_img %}
-                    {% if item.img1 %}
-                    <div class="col-6 img1">
-                        <img src="{{ item.img1.url }}" alt="изображение1" width="170">
-                    </div>
-                     {% endif %}
+                        {% if item.img1 %}
+                            <div class="col-6 img1">
+                                <a href="#"><img src="{{ item.img1.url }}" alt="изображение1" width="170"></a>
+                            </div>
+                        {% endif %}
                         {% if item.img2 %}
-                    <div class="col-6 img2">
-                        <img src="{{ item.img2.url }}" alt="изображение1" width="170">
-                    </div>
+                            <div class="col-6 img2">
+                                <a href="#"><img src="{{ item.img2.url }}" alt="изображение1" width="170"></a>
+                            </div>
                         {% endif %}
                         {% if item.img3 %}
-                    <div class="col-6 img3">
-                        <img src="{{ item.img3.url }}" alt="изображение1" width="170">
-                    </div>
+                            <div class="col-6 img3">
+                                <a href="#"><img src="{{ item.img3.url }}" alt="изображение1" width="170"></a>
+                            </div>
                         {% endif %}
                     {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 copyright-item">
+                    <ul class="nav">
+                        <li class="nav-link"><a href="https://psdfreebies.com/psd/category/web-elements/web-templates/">
+                            &copy;2021 PSD шаблон взят с сайта psdfreebies.com</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Блог</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Контакты</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Отзывы</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
