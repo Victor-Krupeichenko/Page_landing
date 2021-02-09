@@ -1,1 +1,225 @@
-.main-header{background:url(../images/main1.jpg) no-repeat center;background-size:cover;height:100vh;min-height:600px;position:relative}.main-header ul li a{font-size:18px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600}.main-header ul{margin-right:25px;margin-top:25px}.main-header ul li a::after{content:' ';display:block;width:100%;background-color:#fff;height:1px;transform:scale(0);transition:all .3s}.main-header ul li a:hover::after{transform:scale(1)}.main-header-text h3{font-family:'Palatino Linotype','Book Antiqua',Palatino,serif;font-size:42px;font-style:italic}.main-header-text h4{font-family:'Montserrat',sans-serif;font-size:64px;font-weight:600}.main-header-text p{font-family:'Montserrat',sans-serif;color:#fff;font-size:23px}.main-header-text{position:absolute;top:25%;left:15%;color:#fff;max-width:800px}.main-header-button a{color:#fff;text-decoration:none}.main-header-button .btn{font-size:17px;font-weight:600;color:#fff;text-transform:uppercase;padding:15px 40px;margin:20px;opacity:.65;box-shadow:0 10px 16px rgba(0,0,0,.35);transition:all .3s}.main-header-button .btn:hover{opacity:1}.main-header-button .btn-pink{background-color:#f42267}.main-header-button .btn-violet{background-color:#783493}
+.main-header {
+    background: url(../images/main1.jpg) no-repeat center;
+    background-size: cover;
+    height: 100vh;
+    min-height: 600px;
+    position: relative
+}
+
+.main-header ul li a {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+.main-header ul {
+    margin-right: 25px;
+    margin-top: 25px
+}
+
+.main-header ul li a::after {
+    content: ' ';
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    height: 1px;
+    transform: scale(0);
+    transition: all .3s
+}
+
+.main-header ul li a:hover::after {
+    transform: scale(1)
+}
+
+.main-header-text h3 {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    font-size: 42px;
+    font-style: italic
+}
+
+.main-header-text h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 64px;
+    font-weight: 600
+}
+
+.main-header-text p {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 23px
+}
+
+.main-header-text {
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    color: #fff;
+    max-width: 800px
+}
+
+.main-header-button a {
+    color: #fff;
+    text-decoration: none
+}
+
+.main-header-button .btn {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    margin: 20px;
+    opacity: .65;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, .35);
+    transition: all .3s
+}
+
+.main-header-button .btn:hover {
+    opacity: 1
+}
+
+.main-header-button .btn-pink {
+    background-color: #f42267
+}
+
+.main-header-button .btn-violet {
+    background-color: #783493
+}
+
+@media only screen and (max-width : 1487px){
+    .main-header-text h3 {
+        font-size: 38px;
+    }
+    .main-header-text h4{
+        font-size: 58px;
+    }
+    .main-header-text p {
+        font-size: 18px;
+    }
+
+}
+@media only screen and (max-width : 1107px){
+    .main-header-text{
+        left: 10%;
+    }
+}
+@media only screen and (max-width : 991px){
+    .main-header ul li a::after {
+        width: 8%;
+    }
+    .main-header-text{
+        top: 35%;
+    }
+}
+@media only screen and (max-width : 987px){
+    .main-header-text{
+        left: 7%;
+    }
+    .main-header-text h3 {
+        font-size: 30px;
+    }
+    .main-header-text h4{
+        font-size: 50px;
+    }
+    .main-header-text p {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width : 977px){
+    .main-header-text{
+        left: 4%;
+    }
+    .main-header ul li a::after {
+        width: 9%;
+    }
+}
+@media only screen and (max-width : 875px){
+    .main-header-text{
+        left: 2%;
+    }
+    .main-header ul li a::after {
+        width: 10%;
+    }
+    .main-header-text h3 {
+        font-size: 25px;
+    }
+    .main-header-text h4{
+        font-size: 40px;
+    }
+    .main-header-text p {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width : 796px){
+    .main-header ul li a::after {
+        width: 11%;
+    }
+}
+@media only screen and (max-width : 796px){
+    .main-header ul li a::after {
+        width: 12%;
+    }
+}
+@media only screen and (max-width : 686px){
+    .main-header ul li a::after {
+        width: 14%;
+    }
+}
+@media only screen and (max-width : 686px){
+    .main-header ul li a::after {
+        width: 16%;
+    }
+}
+@media only screen and (max-width : 560px){
+    .main-header-button .btn {
+        font-size: 14px;
+        margin-bottom: -5%;
+        margin-top: 10%;
+    }
+    .main-header-text{
+        top: 35%;
+    }
+    .main-header ul li a::after {
+        width: 18%;
+    }
+}
+@media only screen and (max-width : 460px){
+    .main-header-text{
+        left: 0;
+    }
+    .main-header ul li a::after {
+        width: 20%;
+    }
+
+}
+@media only screen and (max-width : 444px){
+    .main-header ul li a::after {
+        width: 22%;
+    }
+}
+@media only screen and (max-width : 392px){
+    .main-header-text h4{
+        font-size: 30px;
+    }
+    .main-header ul li a::after {
+        width: 24%;
+    }
+    .main-header-button .btn {
+        margin-top: 15%;
+    }
+}
+@media only screen and (max-width : 374px){
+    .main-header ul li a::after {
+        width: 26%;
+    }
+}
+@media only screen and (max-width : 374px){
+    .main-header ul li a::after {
+        width: 28%;
+    }
+}
