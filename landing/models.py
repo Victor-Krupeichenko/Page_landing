@@ -149,3 +149,14 @@ class FormQuestions(models.Model):
 
     def __str__(self):
         return self.questions
+
+
+class FooterImages(models.Model):
+    title = models.CharField(max_length=30, verbose_name='Название варианта')
+    img1 = models.ImageField(upload_to='images_footer/%m/%d/', blank=True)
+    img2 = models.ImageField(upload_to='images_footer/%m/%d/', blank=True)
+    img3 = models.ImageField(upload_to='images_footer/%m/%d/', blank=True)
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return self.title
