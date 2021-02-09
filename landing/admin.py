@@ -111,3 +111,9 @@ class FormTextAdmin(admin.ModelAdmin):
 @admin.register(FormQuestions)
 class FormQuestionsAdmin(admin.ModelAdmin):
     list_display = ['name', 'questions', 'email', 'created_at']
+
+
+@admin.register(FooterImages)
+class FooterImagesAdmin(admin.ModelAdmin):
+    list_display = ['title', 'is_published']
+    list_editable = ['is_published']
