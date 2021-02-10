@@ -14,7 +14,7 @@
 				<div class="carousel-item active">
 					<div class="container">
 						<div class="row">
-							<div class="col-sm-7">
+							<div class="col-md-7">
 								<div class="carousel-caption">
                                     {% for item in reviews_header %}
 									<h3>{{ item.title }}</h3>
@@ -28,7 +28,7 @@
                                     {% endfor %}
 								</div>
 							</div>
-							<div class="col-sm-5">
+							<div class="col-sm-5 d-none d-md-block">
 								<img src="../static/images/Client%20Image.png" alt="">
 							</div>
 						</div>
@@ -37,7 +37,7 @@
 				<div class="carousel-item">
 					<div class="container">
 						<div class="row">
-							<div class="col-sm-7">
+							<div class="col-md-7">
 								<div class="carousel-caption">
 									{% for item in reviews_header %}
 									<h3>{{ item.title }}</h3>
@@ -51,7 +51,7 @@
                                     {% endfor %}
 								</div>
 							</div>
-							<div class="col-sm-5">
+							<div class="col-sm-5 d-none d-md-block">
 								<img src="../static/images/Client%20Image.png" alt="">
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 				<div class="carousel-item">
 					<div class="container">
 						<div class="row">
-							<div class="col-sm-7">
+							<div class="col-md-7">
 								<div class="carousel-caption">
 									{% for item in reviews_header %}
 									<h3>{{ item.title }}</h3>
@@ -74,7 +74,7 @@
                                     {% endfor %}
 								</div>
 							</div>
-							<div class="col-sm-5">
+							<div class="col-sm-5 d-none d-md-block">
 								<img src="../static/images/Client%20Image.png" alt="">
 							</div>
 						</div>
@@ -90,6 +90,9 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
-<a href="#" class="btn btn-reviews-one">Оставить отзыв</a>
-<a href="#" class="btn btn-reviews-two">Все отзывы</a>
+<div class="reviews-button text-center">
+    <button class="btn btn-reviews-one"><a href="#">Оставить отзыв</a></button>
+    <button class="btn btn-reviews-two"><a href="#">Все отзывы</a></button>
+</div>
+
 </section>
