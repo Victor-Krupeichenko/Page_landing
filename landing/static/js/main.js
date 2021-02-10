@@ -1,8 +1,16 @@
 $(function () {
+    $(window).on('load', function(){
+        $('.preloader').delay(50).fadeOut('slow', function(){
+        	$(this).attr('style', 'display: none !important');
+        });
+    });
+
 	baguetteBox.run('.gallery', {
     animation: 'fadeIn',
     noScrollbars: true
 });
+
+
 	 $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
             $('.arrow_page_up').fadeIn();
