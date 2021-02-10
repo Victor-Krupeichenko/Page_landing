@@ -172,9 +172,19 @@
         padding-left: 7%;
     }
 }
+@media only screen and (max-width : 575px){
+    .section-reviews .blockquote p::before {
+        top: 21%;
+    }
+}
 @media only screen and (max-width : 520px){
     .section-reviews .blockquote p {
         padding-left: 8%;
+    }
+}
+@media only screen and (max-width : 516px){
+    .section-reviews .blockquote p::before {
+        top: 20%;
     }
 }
 @media only screen and (max-width : 450px){
@@ -195,6 +205,16 @@
 @media only screen and (max-width : 376px){
     .section-reviews .blockquote p::before {
         top: 20%;
+    }
+}
+@media only screen and (max-width : 364px){
+    .section-reviews .blockquote p {
+        padding-left: 11%;
+    }
+}
+@media only screen and (max-width : 350px){
+    .section-reviews .blockquote p::before {
+        top: 19%;
     }
 }
 @media only screen and (max-width : 344px){
