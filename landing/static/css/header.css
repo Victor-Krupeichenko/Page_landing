@@ -11,12 +11,20 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 600
 }
+
+.navbar .navbar-toggler .fa-align-justify {
+    color: #ffffff;
+    font-size: 20px;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: #ffffff;
 }
+
 .navbar-light .navbar-nav .nav-link:hover {
     color: #ffffff;
 }
+
 .main-header ul {
     margin-right: 25px;
     margin-top: 25px
@@ -91,134 +99,165 @@
     background-color: #783493
 }
 
-@media only screen and (max-width : 1487px){
+@media only screen and (max-width: 1487px) {
     .main-header-text h3 {
         font-size: 38px;
     }
-    .main-header-text h4{
+
+    .main-header-text h4 {
         font-size: 58px;
     }
+
     .main-header-text p {
         font-size: 18px;
     }
 
 }
-@media only screen and (max-width : 1107px){
-    .main-header-text{
+
+@media only screen and (max-width: 1107px) {
+    .main-header-text {
         left: 10%;
     }
 }
-@media only screen and (max-width : 991px){
+
+@media only screen and (max-width: 991px) {
     .main-header ul li a::after {
         width: 8%;
     }
-    .main-header-text{
+
+    .main-header-text {
         top: 35%;
     }
 }
-@media only screen and (max-width : 987px){
-    .main-header-text{
+
+@media only screen and (max-width: 987px) {
+    .main-header-text {
         left: 7%;
     }
+
     .main-header-text h3 {
         font-size: 30px;
     }
-    .main-header-text h4{
+
+    .main-header-text h4 {
         font-size: 50px;
     }
+
     .main-header-text p {
         font-size: 14px;
     }
 }
-@media only screen and (max-width : 977px){
-    .main-header-text{
+
+@media only screen and (max-width: 977px) {
+    .main-header-text {
         left: 4%;
     }
+
     .main-header ul li a::after {
         width: 9%;
     }
 }
-@media only screen and (max-width : 875px){
-    .main-header-text{
+
+@media only screen and (max-width: 875px) {
+    .main-header-text {
         left: 2%;
     }
+
     .main-header ul li a::after {
         width: 10%;
     }
+
     .main-header-text h3 {
         font-size: 25px;
     }
-    .main-header-text h4{
+
+    .main-header-text h4 {
         font-size: 40px;
     }
+
     .main-header-text p {
         font-size: 14px;
     }
 }
-@media only screen and (max-width : 796px){
+
+@media only screen and (max-width: 796px) {
     .main-header ul li a::after {
         width: 11%;
     }
 }
-@media only screen and (max-width : 796px){
+
+@media only screen and (max-width: 796px) {
     .main-header ul li a::after {
         width: 12%;
     }
 }
-@media only screen and (max-width : 686px){
+
+@media only screen and (max-width: 686px) {
     .main-header ul li a::after {
         width: 14%;
     }
 }
-@media only screen and (max-width : 686px){
+
+@media only screen and (max-width: 686px) {
     .main-header ul li a::after {
         width: 16%;
     }
 }
-@media only screen and (max-width : 560px){
+
+@media only screen and (max-width: 560px) {
     .main-header-button .btn {
         font-size: 14px;
         margin-bottom: -5%;
         margin-top: 10%;
     }
-    .main-header-text{
+
+    .main-header-text {
         top: 35%;
     }
+
     .main-header ul li a::after {
         width: 18%;
     }
 }
-@media only screen and (max-width : 460px){
-    .main-header-text{
+
+@media only screen and (max-width: 460px) {
+    .main-header-text {
         left: 0;
     }
+
     .main-header ul li a::after {
         width: 20%;
     }
 
 }
-@media only screen and (max-width : 444px){
+
+@media only screen and (max-width: 444px) {
     .main-header ul li a::after {
         width: 22%;
     }
 }
-@media only screen and (max-width : 392px){
-    .main-header-text h4{
+
+@media only screen and (max-width: 392px) {
+    .main-header-text h4 {
         font-size: 30px;
     }
+
     .main-header ul li a::after {
         width: 24%;
     }
+
     .main-header-button .btn {
         margin-top: 15%;
     }
 }
-@media only screen and (max-width : 374px){
+
+@media only screen and (max-width: 374px) {
     .main-header ul li a::after {
         width: 26%;
     }
 }
-@media only screen and (max-width : 374px){
+
+@media only screen and (max-width: 374px) {
     .main-header ul li a::after {
         width: 28%;
     }
