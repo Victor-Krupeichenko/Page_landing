@@ -116,8 +116,8 @@ class ReviewsHeader(models.Model):
 
 
 class Reviews(models.Model):
-    name = models.CharField(max_length=11, verbose_name='Имя')
-    text = models.TextField(max_length=170, verbose_name='Отзыв')
+    name = models.CharField(max_length=11, verbose_name='Имя', help_text='максимальня длина 11 символов')
+    text = models.TextField(max_length=170, verbose_name='Отзыв', help_text='максимальня длина 170 символов')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
@@ -157,6 +157,17 @@ class FooterImages(models.Model):
     img2 = models.ImageField(upload_to='images_footer/%m/%d/', blank=True)
     img3 = models.ImageField(upload_to='images_footer/%m/%d/', blank=True)
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return self.title
+
+class ReviewsAddText(models.Model):
+    title = models.CharField(max_length=150, verbose_name='Заголовок',
+                        help_text='Этот заголовок будет отображатся на странице добовления отзыва')
+    img1 = models.ImageField(upload_to='reviews_add/images1/%m/%d/', blank=True)
+    img2 = models.ImageField(upload_to='reviews_add/images2/%m/%d/', blank=True)
+    img3 = models.ImageField(upload_to='reviews_add/images3/%m/%d/', blank=True)
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
