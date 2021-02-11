@@ -1,0 +1,71 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/reviews_add.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>Добавить Отзыв</title>
+{% endblock %}
+
+{% block content %}
+    <section class="reviews_add">
+        {% include 'landing/inc/_nav_rewiews.html' %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 carousel-reviews text-center">
+                    {% for item in object_list %}
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                {% if item.img1 %}
+                                     <img src="{{ item.img1.url }}" alt="..." width="250" height="250">
+                                {% else %}
+                                    <img src="../static/images/django.png" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="carousel-item">
+                                {% if item.img2 %}
+                                    <img src="{{ item.img2.url }}" alt="..." width="250" height="250">
+                                {% else %}
+                                    <img src="../static/images/bootstrap.png" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="carousel-item">
+                                {% if item.img3 %}
+                                    <img src="{{ item.img3.url }}" alt="..." width="250" height="250">
+                                {% else %}
+                                    <img src="../static/images/css.png" alt="...">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-2 form-item">
+                        <h3>{{ item.title }}</h3>
+                    {% endfor %}
+                    <form action="{% url 'reviews_add' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.non.field.errors }}
+                        <label for="{{ for.name.id_for_label }}"></label>
+                        {{ form.name }}
+                        <div class="invalid-feedback">
+                            {{ form.name.errors }}
+                        </div>
+                        <label for="{{ for.text.id_for_label }}"></label>
+                        {{ form.text }}
+                        <div class="invalid-feedback">
+                            {{ form.text.errors }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Добавить отзыв</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
