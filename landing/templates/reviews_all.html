@@ -13,18 +13,21 @@
     <section class="reviews_all">
         {% include 'landing/inc/_nav_rewiews.html' %}
         <div class="container">
-        <div class="row row-cols-1 row-cols-md-4">
-            {% for item in object_list %}
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text">{{ item.text }}</p>
+            <div class="row row-cols-1 row-cols-md-4">
+                {% for item in object_list %}
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.text }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">{{ item.created_at }}</small>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         </div>
     </section>
 {% endblock %}
