@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 from .models import *
@@ -33,3 +34,9 @@ class ReviewsCreate(CreateView, MyFormReviewsAdd):
     success_url = reverse_lazy('home')
 
 
+class ReviewsAll(ListView):
+    model = Reviews
+    template_name = 'reviews_all.html'
+
+    def get_queryset(self):
+        return Reviews.objects.filter(is_published=True)
