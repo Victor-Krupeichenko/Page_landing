@@ -1,6 +1,8 @@
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 from .models import *
-from .utils import MyFormLanding
+from .utils import MyFormLanding, MyFormReviewsAdd
+from .forms import FormReviews
 
 
 class Index(MyFormLanding, ListView):
@@ -23,3 +25,11 @@ class Index(MyFormLanding, ListView):
         context['form_text'] = FormText.objects.filter(is_published=True)
         context['footer_img'] = FooterImages.objects.filter(is_published=True)
         return context
+
+
+class ReviewsCreate(CreateView, MyFormReviewsAdd):
+    form_class = FormReviews
+    template_name = 'reviews_add.html'
+    success_url = reverse_lazy('home')
+
+
