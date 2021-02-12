@@ -36,7 +36,7 @@ class ReviewsCreate(CreateView, MyFormReviewsAdd):
 class ReviewsAll(ListView):
     model = Reviews
     template_name = 'reviews_all.html'
-    paginate_by = 12
+    paginate_by = 8
 
     def get_queryset(self):
         return Reviews.objects.filter(is_published=True)
