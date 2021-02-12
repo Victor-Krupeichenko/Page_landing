@@ -39,7 +39,7 @@
 .reviews_add .navbar-light .navbar-nav .nav-link {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
+    font-size: 14px;
 }
 .reviews_add .navbar-light .navbar-nav .nav-link::after{
     content: ' ';
