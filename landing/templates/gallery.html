@@ -7,20 +7,20 @@
                 <p>{{ item.content }}</p>
                 <ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="Django2-tab" data-toggle="tab" href="#Django2" role="tab"
-                           aria-controls="Django2" aria-selected="true">Django</a>
+                        <a class="nav-link active" id="Django-gallery-tab" data-toggle="tab" href="#Django-gallery" role="tab"
+                           aria-controls="Django-gallery" aria-selected="true">Django</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="Bootstrap2-tab" data-toggle="tab" href="#Bootstrap2" role="tab"
-                           aria-controls="Bootstrap2" aria-selected="false">Bootstrap</a>
+                        <a class="nav-link" id="Bootstrap-gallery-tab" data-toggle="tab" href="#Bootstrap-gallery" role="tab"
+                           aria-controls="Bootstrap-gallery" aria-selected="false">Bootstrap</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="Css2-tab" data-toggle="tab" href="#Css2" role="tab"
-                           aria-controls="Css2" aria-selected="false">Css</a>
+                        <a class="nav-link" id="CSS-gallery-tab" data-toggle="tab" href="#CSS-gallery" role="tab"
+                           aria-controls="CSS-gallery" aria-selected="false">Css</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="Django2" role="tabpanel" aria-labelledby="Django2-tab">
+                    <div class="tab-pane fade show active" id="Django-gallery" role="tabpanel" aria-labelledby="Django-gallery-tab">
                         <div class="row gallery text-center">
                             <div class="col-sm-4 gallery-item">
                                 <a href="{{ item.img_1_dj.url }}">
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="Bootstrap2" role="tabpanel" aria-labelledby="Bootstrap2-tab">
+                    <div class="tab-pane fade" id="Bootstrap-gallery" role="tabpanel" aria-labelledby="Bootstrap-gallery">
                         <div class="gallery row">
                             <div class="col-sm-4 gallery-item">
                                 <a href="{{ item.img_1_boots.url }}">
@@ -118,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="Css2" role="tabpanel" aria-labelledby="Css2-tab">
+                    <div class="tab-pane fade" id="CSS-gallery" role="tabpanel" aria-labelledby="CSS-gallery-tab">
                         <div class="gallery row">
                             <div class="col-sm-4 gallery-item">
                                 <a href="{{ item.img_1_css.url }}">
