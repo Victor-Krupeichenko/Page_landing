@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extrastyle %}
-    <link rel="stylesheet" href="{% static 'css/reviews_add.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reviews_all.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -11,18 +11,19 @@
 
 {% block content %}
     <section class="reviews_all">
-        {% include 'landing/inc/_nav_rewiews.html' %}
+        {% include 'landing/inc/_nav_reviews_all.html' %}
         <div class="container">
+            <h1 class="text-center mt-5">Все отзывы</h1>
             <div class="row row-cols-1 row-cols-md-4">
                 {% for item in object_list %}
-                    <div class="col mb-4">
+                    <div class="col mb-4 card-item">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">{{ item.name }}</h5>
                                 <p class="card-text">{{ item.text }}</p>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">{{ item.created_at }}</small>
+                                <small class="text-muted"><i class="fa fa-calendar" aria-hidden="true"> {{ item.created_at }}</i></small>
                             </div>
                         </div>
                     </div>
