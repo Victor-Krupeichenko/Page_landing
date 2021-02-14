@@ -1,0 +1,7 @@
+<div class="sidebar-widget widget-category">
+        <ul>
+        {% for item in categories %}
+            <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
