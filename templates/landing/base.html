@@ -28,12 +28,15 @@
     <link rel="stylesheet" href="{% static 'css/baguetteBox.min.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
 
-    {% block title %}
-        <title>Мой сайт</title>
-    {% endblock %}
+
+        {% block title %}
+           <title>{{ title }}</title>
+        {% endblock %}
+
 
 
 </head>
+{% block navbar %}{% endblock %}
 <body>
 <div class="preloader d-flex justify-content-center align-items-center">
     <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
