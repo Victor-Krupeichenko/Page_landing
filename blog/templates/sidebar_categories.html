@@ -1,7 +1,10 @@
 <div class="sidebar-widget widget-category">
         <ul>
         {% for item in categories %}
-            <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+            <li><a href="{{ item.get_absolute_url }}">{{ item.title }}
+                <span>  -новостей- {{ item.cnt }}</span></a></li>
         {% endfor %}
     </ul>
+    <p><a href="{% url 'blog' %}"><i class="fa fa-share-square-o" aria-hidden="true"> Главная страница блога</i></a></p>
 </div>
+
