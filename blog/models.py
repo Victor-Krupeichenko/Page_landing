@@ -16,6 +16,9 @@ class Notes(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse_lazy('views_notes', kwargs={'slug':self.slug})
+
 
 class BlogCategories(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название')
