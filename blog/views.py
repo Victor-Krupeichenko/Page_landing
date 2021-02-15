@@ -1,4 +1,5 @@
-from django.views.generic import ListView
+from django.db.models import F
+from django.views.generic import ListView, DetailView
 from .models import Notes, BlogCategories
 
 
@@ -25,4 +26,17 @@ class NotesByCategories(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NotesByCategories, self).get_context_data(**kwargs)
         context['title'] = BlogCategories.objects.get(slug=self.kwargs['slug'])
+        return context
+
+
+class ViewsNotes(DetailView):
+    model = Notes
+    template_name = 'views_notes.html'
+    context_object_name = 'notes'
+
+    def get_context_data(self, **kwargs):
+        context = super(ViewsNotes, self).get_context_data(**kwargs)
+        self.object.views = F('views') + 1
+        self.object.save()
+        self.object.refresh_from_db()
         return context
