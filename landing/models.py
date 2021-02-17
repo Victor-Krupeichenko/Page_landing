@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 
 class Headers(models.Model):
@@ -12,27 +13,25 @@ class Headers(models.Model):
 
 
 class Inspires(models.Model):
+    title = models.CharField(max_length=31, verbose_name='заголовок')
+    slug = models.SlugField(max_length=31, unique=True, db_index=True, verbose_name='URLs')
+    content = models.TextField( verbose_name='Контент')
+    img = models.ImageField(upload_to='images/django/%Y/%m/%d/', blank=True, verbose_name='Изображение',
+                                   help_text='Это поле необязательно к заполнению')
+    attainment_title = models.CharField(max_length=31, verbose_name='Заголовок')
+    attainment_content = models.TextField(max_length=111, verbose_name='Контент')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy('single_inspire', kwargs={'slug':self.slug})
+
+class InspireHeader(models.Model):
     title = models.CharField(max_length=31, verbose_name='Первый заголовок')
     title_2 = models.CharField(max_length=42, verbose_name='Второй заголовок')
-    django_content = models.TextField(max_length=281, verbose_name='Контент Django')
-    bootstrap_content = models.TextField(max_length=281, verbose_name='Контент Bootstrap')
-    css_content = models.TextField(max_length=281, verbose_name='Контент CSS')
-    django_img = models.ImageField(upload_to='images/django/%Y/%m/%d/', blank=True, verbose_name='Изображение',
-                                   help_text='Это поле необязательно к заполнению')
-    bootstrap_img = models.ImageField(upload_to='images/bootstrap/%Y/%m/%d/', blank=True, verbose_name='Изображение',
-                                      help_text='Это поле необязательно к заполнению')
-    css_img = models.ImageField(upload_to='images/css/%Y/%m/%d/', blank=True, verbose_name='Изображение',
-                                help_text='Это поле необязательно к заполнению')
-    attainment_django_num = models.CharField(max_length=7, verbose_name='Достижение в цифрах')
-    attainment_django_title = models.CharField(max_length=31, verbose_name='Заголовок')
-    attainment_django_content = models.TextField(max_length=111, verbose_name='Контент')
-    attainment_bootstrap_num = models.CharField(max_length=7, verbose_name='Достижение в цифрах')
-    attainment_bootstrap_title = models.CharField(max_length=31, verbose_name='Заголовок')
-    attainment_bootstrap_content = models.TextField(max_length=111, verbose_name='Контент')
-    attainment_css_num = models.CharField(max_length=7, verbose_name='Достижение в цифрах')
-    attainment_css_title = models.CharField(max_length=31, verbose_name='Заголовок')
-    attainment_css_content = models.TextField(max_length=111, verbose_name='Контент')
-    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
