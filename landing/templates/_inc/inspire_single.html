@@ -1,0 +1,21 @@
+{% extends 'landing/base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block navbar %}
+    {% include 'landing/inc/_nav.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="card text-center">
+
+        <div class="card-body">
+            <h5 class="card-title">{{ inspire.title }}</h5>
+            <p class="card-text">{{ inspire.content }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            <img src="{{ inspire.img.url }}" alt="" width="282" height="281">
+        </div>
+    </div>
+{% endblock %}
