@@ -22,7 +22,12 @@ class InspiresAdmin(admin.ModelAdmin):
         models.CharField: {'widget': TextInput(attrs={'size': 50})},
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
+    prepopulated_fields = {'slug':('title',)}
 
+@admin.register(InspireHeader)
+class InspireHeaderAdmin(admin.ModelAdmin):
+    list_display = ['title', 'title_2', 'is_published']
+    list_editable = ['is_published']
 
 @admin.register(Crm)
 class CrmAdmin(admin.ModelAdmin):
