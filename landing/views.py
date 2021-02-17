@@ -1,5 +1,4 @@
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 from .models import *
 from .utils import MyFormLanding, MyFormReviewsAdd
 from .forms import FormReviews
@@ -15,7 +14,6 @@ class Index(MyFormLanding, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
         context['title'] = 'Мой сайт'
-        context['inspires'] = Inspires.objects.filter(is_published=True)
         context['lets'] = Lets.objects.filter(is_published=True)
         context['crm'] = Crm.objects.filter(is_published=True)
         context['gallery'] = Galleries.objects.filter(is_published=True)
@@ -41,3 +39,14 @@ class ReviewsAll(ListView):
 
     def get_queryset(self):
         return Reviews.objects.filter(is_published=True)
+
+
+class InspireViews(DetailView):
+    model = Inspires
+    template_name = '_inc/inspire_single.html'
+    context_object_name = 'inspire'
+
+    def get_context_data(self, **kwargs):
+        context = super(InspireViews, self).get_context_data(**kwargs)
+        context['title'] = Inspires.objects.get(slug=self.kwargs['slug'])
+        return context
