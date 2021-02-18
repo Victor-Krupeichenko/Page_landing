@@ -5,9 +5,9 @@
                 {% for item in lets %}
                     <h3>{{ item.title }}</h3>
                     <h4>{{ item.title_2 }}</h4>
-                    <p>{{ item.lets_content }}</p>
+                    <p>{{ item.content|truncatewords:30 }}</p>
+                    <p><a href="{{ item.get_absolute_url }}" class="btn btn-pink">Читать</a></p>
                 {% endfor %}
-                <p><a href="#" class="btn btn-pink">Read more</a></p>
             </div>
         </div>
     </div>
