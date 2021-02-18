@@ -46,7 +46,22 @@ class InspireViews(DetailView):
     template_name = '_inc/inspire_single.html'
     context_object_name = 'inspire'
 
+    def get_queryset(self):
+        return Inspires.objects.filter(is_published=True)
+
     def get_context_data(self, **kwargs):
         context = super(InspireViews, self).get_context_data(**kwargs)
         context['title'] = Inspires.objects.get(slug=self.kwargs['slug'])
         return context
+
+
+class LetsViews(DetailView):
+    model = Lets
+    template_name = '_inc/lets_single_content.html'
+    context_object_name = 'lets'
+
+    def get_context_data(self, **kwargs):
+        context = super(LetsViews, self).get_context_data(**kwargs)
+        context['title'] = "Раздел Let's"
+        return context
+   
