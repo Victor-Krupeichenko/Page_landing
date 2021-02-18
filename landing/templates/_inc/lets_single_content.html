@@ -1,0 +1,19 @@
+{% extends 'landing/base.html' %}
+
+{% block title %}
+<title>{{ title }}</title>
+{% endblock %}
+
+{% block navbar %}
+{% include 'landing/inc/_nav.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">{{ lets.title }}</h5>
+            <h4 class="card-title">{{ lets.title_2 }}</h4>
+            <p class="card-text">{{ lets.content }}</p>
+        </div>
+    </div>
+{% endblock %}
