@@ -41,11 +41,15 @@ class Lets(models.Model):
     title = models.CharField(max_length=18, verbose_name='Певый заголовок')
     title_2 = models.CharField(max_length=42, verbose_name='Второй заголовок', blank=True,
                                help_text='Это поле необязательно к заполнению')
-    lets_content = models.TextField(max_length=171, verbose_name='Контент')
+    content = models.TextField(verbose_name='Контент')
+    slug = models.SlugField(max_length=15, unique=True, db_index=True, verbose_name='URLs')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy('single_lets', kwargs={'slug': self.slug})
 
 
 class Crm(models.Model):
