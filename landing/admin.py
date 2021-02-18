@@ -4,7 +4,7 @@ from django.template.defaultfilters import truncatechars
 from .models import *
 
 
-@admin.register(Headers, Lets)
+@admin.register(Headers)
 class HeadersLetsAdmin(admin.ModelAdmin):
     list_display = ['title', 'is_published']
     list_editable = ['is_published']
@@ -12,6 +12,16 @@ class HeadersLetsAdmin(admin.ModelAdmin):
         models.CharField: {'widget': TextInput(attrs={'size': 50})},
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
+
+@admin.register(Lets)
+class LetsAdmin(admin.ModelAdmin):
+    list_display = ['title', 'is_published']
+    list_editable = ['is_published']
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': 50})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
+    }
+    prepopulated_fields = {'slug':('content',)}
 
 
 @admin.register(Inspires)
