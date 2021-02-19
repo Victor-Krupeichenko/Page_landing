@@ -13,6 +13,7 @@ class HeadersLetsAdmin(admin.ModelAdmin):
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
 
+
 @admin.register(Lets)
 class LetsAdmin(admin.ModelAdmin):
     list_display = ['title', 'is_published']
@@ -21,7 +22,7 @@ class LetsAdmin(admin.ModelAdmin):
         models.CharField: {'widget': TextInput(attrs={'size': 50})},
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
-    prepopulated_fields = {'slug':('content',)}
+    prepopulated_fields = {'slug': ('content',)}
 
 
 @admin.register(Inspires)
@@ -32,52 +33,68 @@ class InspiresAdmin(admin.ModelAdmin):
         models.CharField: {'widget': TextInput(attrs={'size': 50})},
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
-    prepopulated_fields = {'slug':('title',)}
+    prepopulated_fields = {'slug': ('title',)}
+
 
 @admin.register(InspireHeader)
 class InspireHeaderAdmin(admin.ModelAdmin):
     list_display = ['title', 'title_2', 'is_published']
     list_editable = ['is_published']
 
+
 @admin.register(Crm)
 class CrmAdmin(admin.ModelAdmin):
-    list_display = ['title', 'is_published']
+    list_display = ['title', 'title_2', 'short_content', 'is_published']
     list_editable = ['is_published']
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': 50})},
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
 
+    def short_content(self, obj):
+        return truncatechars(obj.content, 30)
 
-@admin.register(Galleries)
-class GalleriesAdmin(admin.ModelAdmin):
-    list_display = ['title', 'content', 'is_published']
+    short_content.short_description = 'Контент'
+
+
+@admin.register(CrmContent)
+class CrmContentAdmin(admin.ModelAdmin):
+    list_display = ['title', 'short_content', 'is_published']
+    list_editable = ['is_published']
+
+    def short_content(self, odj):
+        return truncatechars(odj.content, 30)
+
+    short_content.short_description = 'контент'
+
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': 50})},
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
     }
-    fieldsets = (
-        ('Галерея - Текстовая часть', {
-            'fields': ('title', 'content')
-        }),
-        ('Изображение для раздела Django', {
-            'fields': ('img_1_dj', 'img_2_dj', 'img_3_dj', 'img_4_dj', 'img_5_dj', 'img_6_dj', 'img_7_dj',
-                       'img_8_dj', 'img_9_dj')
-        }),
-        ('Изображение для раздела Bootstrap', {
-            'fields': ('img_1_boots', 'img_2_boots', 'img_3_boots', 'img_4_boots', 'img_5_boots', 'img_6_boots',
-                       'img_7_boots', 'img_8_boots', 'img_9_boots')
-        }),
-        ('Изображение для раздела CSS', {
-            'fields': ('img_1_css', 'img_2_css', 'img_3_css', 'img_4_css', 'img_5_css', 'img_6_css', 'img_7_css',
-                       'img_8_css', 'img_9_css')
-        }),
-        ('Опубликовать Галерею', {
-            'fields': ('is_published',),
-            'description': 'Прежде чем опубликовать второй вариант галереи - убедитесь что у предыдущего варианта '
-                           'галереии снято отметка -> ОПУБЛИКОВАНО'
-        }),
-    )
+    prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(GalleriesTitles)
+class GalleriesTitlesAdmin(admin.ModelAdmin):
+    list_display = ['title', 'short_content', 'is_published']
+    list_editable = ['is_published']
+
+    def short_content(self, odj):
+        return truncatechars(odj.content, 30)
+
+    short_content.short_description = 'контент'
+
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': 50})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 80})}
+    }
+
+
+@admin.register(GalleryImages)
+class GalleryImagesAdmin(admin.ModelAdmin):
+    list_display = ['title', 'is_published']
+    list_editable = ['is_published']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(ReviewsHeader)
