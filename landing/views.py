@@ -15,7 +15,6 @@ class Index(MyFormLanding, ListView):
         context = super(Index, self).get_context_data(**kwargs)
         context['title'] = 'Мой сайт'
         context['lets'] = Lets.objects.filter(is_published=True)
-        context['crm'] = Crm.objects.filter(is_published=True)
         context['gallery'] = Galleries.objects.filter(is_published=True)
         context['reviews_header'] = ReviewsHeader.objects.filter(is_published=True)
         context['reviews1'] = Reviews.objects.filter(is_published=True)[:1]
@@ -64,4 +63,14 @@ class LetsViews(DetailView):
         context = super(LetsViews, self).get_context_data(**kwargs)
         context['title'] = "Раздел Let's"
         return context
-   
+
+
+class CrmViews(DetailView):
+    model = CrmContent
+    template_name = '_inc/crm_single_content.html'
+    context_object_name = 'crm'
+
+    def get_context_data(self, **kwargs):
+        context = super(CrmViews, self).get_context_data(**kwargs)
+        context['title'] = CrmContent.objects.get(slug=self.kwargs['slug'])
+        return context
