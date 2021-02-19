@@ -7,6 +7,6 @@
         {% endif %}
         <h5>{{ item.title }}</h5>
         <p class="crm-col">{{ item.content|truncatewords:20 }}</p>
-        <p><a href="#" class="btn btn-pink">{{ item.btn_title }}</a></p>
+        <p><a href="{{ item.get_absolute_url }}" class="btn btn-pink">{{ item.btn_title }}</a></p>
     </div>
 {% endfor %}
