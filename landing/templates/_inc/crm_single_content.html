@@ -1,0 +1,24 @@
+{% extends 'landing/base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block navbar %}
+    {% include 'landing/inc/_nav.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="card text-center">
+        <div class="card-footer text-muted">
+            {% if crm.img %}
+            <img src="{{ crm.img.url }}" alt="" width="76" height="71">
+            {% else %}
+            <img src="../../static/images/crmDjango.png" alt="">
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ crm.title }}</h5>
+            <p class="card-text">{{ crm.content }}</p>
+        </div>
+    </div>
+{% endblock %}
