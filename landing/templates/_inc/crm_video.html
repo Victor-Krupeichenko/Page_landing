@@ -1,0 +1,6 @@
+{% for item in videos %}
+<div class="plyr__video-embed js-player two-player" id="player"
+     onclick="players[1].play(click.pause())">
+    {{ item.video|safe }}
+</div>
+{% endfor %}
