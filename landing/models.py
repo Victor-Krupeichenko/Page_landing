@@ -6,6 +6,7 @@ class Headers(models.Model):
     title = models.CharField(max_length=31, verbose_name='Первый заголовок')
     title_2 = models.CharField(max_length=42, verbose_name='Второй заголовок')
     content = models.TextField(max_length=110, verbose_name='Контентная часть')
+    btn_title = models.CharField(max_length=10, default='Читать', blank=True)
     is_published = models.BooleanField(default=False, verbose_name='Опубликовать')
 
     def __str__(self):
@@ -16,6 +17,7 @@ class Inspires(models.Model):
     title = models.CharField(max_length=31, verbose_name='заголовок')
     slug = models.SlugField(max_length=31, unique=True, db_index=True, verbose_name='URLs')
     content = models.TextField( verbose_name='Контент')
+    btn_title = models.CharField(max_length=10, default='Читать', blank=True)
     img = models.ImageField(upload_to='images/django/%Y/%m/%d/', blank=True, verbose_name='Изображение',
                                    help_text='Это поле необязательно к заполнению')
     attainment_title = models.CharField(max_length=31, verbose_name='Заголовок')
@@ -43,6 +45,7 @@ class Lets(models.Model):
                                help_text='Это поле необязательно к заполнению')
     content = models.TextField(verbose_name='Контент')
     slug = models.SlugField(max_length=15, unique=True, db_index=True, verbose_name='URLs')
+    btn_title = models.CharField(max_length=10, default='Читать', blank=True)
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
     def __str__(self):
@@ -57,18 +60,29 @@ class Crm(models.Model):
     title_2 = models.CharField(max_length=43, verbose_name='Второй заголовок', blank=True,
                                help_text='Это поле необязательно к заполнению')
     content = models.TextField(max_length=221, verbose_name='Контент')
-    section_1 = models.CharField(max_length=14, verbose_name='Заголовок')
-    section_content = models.TextField(max_length=110, verbose_name='Контент')
-    section_2 = models.CharField(max_length=14, verbose_name='Заголовок')
-    section_2_content = models.TextField(max_length=110, verbose_name='Контент')
-    video_1 = models.TextField(verbose_name='Видео', blank=True,
-                               help_text='Это поле необязательно к заполнению')
-    video_2 = models.TextField(verbose_name='Видео', blank=True,
-                               help_text='Это поле необязательно к заполнению')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
     def __str__(self):
         return self.title
+
+
+class CrmContent(models.Model):
+    title = models.CharField(max_length=14, verbose_name='Заголовок')
+    slug = models.SlugField(max_length=14, unique=True, db_index=True, verbose_name='URLs')
+    content = models.TextField(verbose_name='Контент')
+    img = models.ImageField(upload_to='images/section_crm/%m/%d/', blank=True)
+    video = models.TextField(verbose_name='Видео', blank=True,
+                               help_text='Это поле необязательно к заполнению')
+    crm = models.ForeignKey(Crm, on_delete=models.PROTECT, verbose_name='Блок')
+    btn_title = models.CharField(max_length=10, default='Читать', blank=True)
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy('crm_single', kwargs={'slug':self.slug})
+
 
 
 class Galleries(models.Model):
