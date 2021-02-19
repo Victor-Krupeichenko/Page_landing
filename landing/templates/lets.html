@@ -6,7 +6,7 @@
                     <h3>{{ item.title }}</h3>
                     <h4>{{ item.title_2 }}</h4>
                     <p>{{ item.content|truncatewords:30 }}</p>
-                    <p><a href="{{ item.get_absolute_url }}" class="btn btn-pink">Читать</a></p>
+                    <p><a href="{{ item.get_absolute_url }}" class="btn btn-pink">{{ item.btn_title }}</a></p>
                 {% endfor %}
             </div>
         </div>
