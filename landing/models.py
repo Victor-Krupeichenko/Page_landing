@@ -16,10 +16,10 @@ class Headers(models.Model):
 class Inspires(models.Model):
     title = models.CharField(max_length=31, verbose_name='заголовок')
     slug = models.SlugField(max_length=31, unique=True, db_index=True, verbose_name='URLs')
-    content = models.TextField( verbose_name='Контент')
+    content = models.TextField(verbose_name='Контент')
     btn_title = models.CharField(max_length=10, default='Читать', blank=True)
     img = models.ImageField(upload_to='images/django/%Y/%m/%d/', blank=True, verbose_name='Изображение',
-                                   help_text='Это поле необязательно к заполнению')
+                            help_text='Это поле необязательно к заполнению')
     attainment_title = models.CharField(max_length=31, verbose_name='Заголовок')
     attainment_content = models.TextField(max_length=111, verbose_name='Контент')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
@@ -28,7 +28,8 @@ class Inspires(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy('single_inspire', kwargs={'slug':self.slug})
+        return reverse_lazy('single_inspire', kwargs={'slug': self.slug})
+
 
 class InspireHeader(models.Model):
     title = models.CharField(max_length=31, verbose_name='Первый заголовок')
@@ -72,7 +73,7 @@ class CrmContent(models.Model):
     content = models.TextField(verbose_name='Контент')
     img = models.ImageField(upload_to='images/section_crm/%m/%d/', blank=True)
     video = models.TextField(verbose_name='Видео', blank=True,
-                               help_text='Это поле необязательно к заполнению')
+                             help_text='Это поле необязательно к заполнению')
     crm = models.ForeignKey(Crm, on_delete=models.PROTECT, verbose_name='Блок')
     btn_title = models.CharField(max_length=10, default='Читать', blank=True)
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
@@ -81,41 +82,30 @@ class CrmContent(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy('crm_single', kwargs={'slug':self.slug})
+        return reverse_lazy('crm_single', kwargs={'slug': self.slug})
 
 
-
-class Galleries(models.Model):
+class GalleriesTitles(models.Model):
     title = models.CharField(max_length=32, verbose_name='Заголовок')
     content = models.TextField(max_length=221, verbose_name='Текстовая часть', blank=True)
-    img_1_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='первое изображение')
-    img_2_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='второе изображение')
-    img_3_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='третья изображение')
-    img_4_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='четвёртое изображение')
-    img_5_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='пятое изображение')
-    img_6_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='шестое изображение')
-    img_7_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='седьмое изображение')
-    img_8_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='восьмое изображение')
-    img_9_dj = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='девятое изображение')
-    img_1_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='первое изображение')
-    img_2_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='второе изображение')
-    img_3_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='третье изображение')
-    img_4_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True,
-                                    verbose_name='четвертое изображение')
-    img_5_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='пятое изображение')
-    img_6_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='шестое изображение')
-    img_7_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='седьмое изображение')
-    img_8_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='восьмое изображение')
-    img_9_boots = models.ImageField(upload_to='images/bootstrap/%m/%d/', blank=True, verbose_name='девятое изображение')
-    img_1_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='первое изображение')
-    img_2_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='второе изображение')
-    img_3_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='третье изображение')
-    img_4_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='четвертое изображение')
-    img_5_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='пятое изображение')
-    img_6_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='шестое изображение')
-    img_7_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='седьмое изображение')
-    img_8_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='восьмое изображение')
-    img_9_css = models.ImageField(upload_to='images/css/%m/%d/', blank=True, verbose_name='девятое изображение')
+    is_published = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+class GalleryImages(models.Model):
+    title = models.CharField(max_length=32, verbose_name='Название галереи')
+    slug = models.SlugField(max_length=32, unique=True, db_index=True, verbose_name='URLs')
+    img_1 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='первое изображение')
+    img_2 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='второе изображение')
+    img_3 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='третья изображение')
+    img_4 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='четвёртое изображение')
+    img_5 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='пятое изображение')
+    img_6 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='шестое изображение')
+    img_7 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='седьмое изображение')
+    img_8 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='восьмое изображение')
+    img_9 = models.ImageField(upload_to='images/django/%m/%d/', blank=True, verbose_name='девятое изображение')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
     def __str__(self):
@@ -178,9 +168,10 @@ class FooterImages(models.Model):
     def __str__(self):
         return self.title
 
+
 class ReviewsAddText(models.Model):
     title = models.CharField(max_length=150, verbose_name='Заголовок',
-                        help_text='Этот заголовок будет отображатся на странице добовления отзыва')
+                             help_text='Этот заголовок будет отображатся на странице добовления отзыва')
     img1 = models.ImageField(upload_to='reviews_add/images1/%m/%d/', blank=True)
     img2 = models.ImageField(upload_to='reviews_add/images2/%m/%d/', blank=True)
     img3 = models.ImageField(upload_to='reviews_add/images3/%m/%d/', blank=True)
