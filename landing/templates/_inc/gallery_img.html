@@ -1,0 +1,118 @@
+<ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
+    {% for item in gallery_img %}
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#{{ item.slug }}" role="tab"
+               aria-controls="home" aria-selected="true">{{ item.title }}</a>
+        </li>
+    {% endfor %}
+    {% for item in gallery_img_1 %}
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab"
+               href="#{{ item.slug }}" role="tab" aria-controls="profile" aria-selected="false">{{ item.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<div class="tab-content" id="myTabContent">
+    {% for item in gallery_img %}
+        <div class="tab-pane fade show active" id="{{ item.slug }}" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row gallery text-center">
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_1.url }}">
+                        <img src="{{ item.img_1.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_2.url }}">
+                        <img src="{{ item.img_2.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_3.url }}">
+                        <img src="{{ item.img_3.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_4.url }}">
+                        <img src="{{ item.img_4.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_5.url }}">
+                        <img src="{{ item.img_5.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_6.url }}">
+                        <img src="{{ item.img_6.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_7.url }}">
+                        <img src="{{ item.img_7.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_8.url }}">
+                        <img src="{{ item.img_8.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_9.url }}">
+                        <img src="{{ item.img_9.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for item in gallery_img_1 %}
+        <div class="tab-pane fade show " id="{{ item.slug }}" role="tabpanel" aria-labelledby="home-tab">
+            <div class="gallery row">
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_1.url }}">
+                        <img src="{{ item.img_1.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_2.url }}">
+                        <img src="{{ item.img_2.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_3.url }}">
+                        <img src="{{ item.img_3.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_4.url }}">
+                        <img src="{{ item.img_4.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_5.url }}">
+                        <img src="{{ item.img_5.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_6.url }}">
+                        <img src="{{ item.img_6.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_7.url }}">
+                        <img src="{{ item.img_7.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_8.url }}">
+                        <img src="{{ item.img_8.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+                <div class="col-sm-4 gallery-item">
+                    <a href="{{ item.img_9.url }}">
+                        <img src="{{ item.img_9.url }}" alt="" width="250" height="250">
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
