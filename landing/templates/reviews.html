@@ -1,93 +1,84 @@
+{% load landing_tags %}
 <section class="section-reviews">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-								<div class="carousel-caption">
-                                    {% for item in reviews_header %}
-									<h3>{{ item.title }}</h3>
-									<h4>{{ item.title_2 }}</h4>
-                                    {% endfor %}
-									{% for item in reviews1 %}
-									<blockquote class="blockquote">
-										<p class="mb-0">{{ item.text }}</p>
-										<footer class="blockquote-footer">{{ item.name }}</footer>
-									</blockquote>
-                                    {% endfor %}
-								</div>
-							</div>
-							<div class="col-sm-5 d-none d-md-block">
-								<img src="../static/images/Client%20Image.png" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-								<div class="carousel-caption">
-									{% for item in reviews_header %}
-									<h3>{{ item.title }}</h3>
-									<h4>{{ item.title_2 }}</h4>
-                                    {% endfor %}
-									{% for item in reviews2 %}
-									<blockquote class="blockquote">
-										<p class="mb-0">{{ item.text }}</p>
-										<footer class="blockquote-footer">{{ item.name }}</footer>
-									</blockquote>
-                                    {% endfor %}
-								</div>
-							</div>
-							<div class="col-sm-5 d-none d-md-block">
-								<img src="../static/images/Client%20Image.png" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-								<div class="carousel-caption">
-									{% for item in reviews_header %}
-									<h3>{{ item.title }}</h3>
-									<h4>{{ item.title_2 }}</h4>
-                                    {% endfor %}
-                                    {% for item in reviews3 %}
-									<blockquote class="blockquote">
-										<p class="mb-0">{{ item.text }}</p>
-										<footer class="blockquote-footer">{{ item.name }}</footer>
-									</blockquote>
-                                    {% endfor %}
-								</div>
-							</div>
-							<div class="col-sm-5 d-none d-md-block">
-								<img src="../static/images/Client%20Image.png" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-<div class="reviews-button text-center">
-    <button class="btn btn-reviews-one"><a href="{% url 'reviews_add' %}">Оставить отзыв</a></button>
-    <button class="btn btn-reviews-two"><a href="{% url 'reviews_all' %}">Все отзывы</a></button>
-</div>
-
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="carousel-caption">
+                                {% show_reviews_title %}
+                                {% for item in reviews1 %}
+                                    <blockquote class="blockquote">
+                                        <p class="mb-0">{{ item.text }}</p>
+                                        <footer class="blockquote-footer">{{ item.name }}</footer>
+                                    </blockquote>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-sm-5 d-none d-md-block">
+                            <img src="../static/images/Client%20Image.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="carousel-caption">
+                                {% show_reviews_title %}
+                                {% for item in reviews2 %}
+                                    <blockquote class="blockquote">
+                                        <p class="mb-0">{{ item.text }}</p>
+                                        <footer class="blockquote-footer">{{ item.name }}</footer>
+                                    </blockquote>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-sm-5 d-none d-md-block">
+                            <img src="../static/images/Client%20Image.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="carousel-caption">
+                                {% show_reviews_title %}
+                                {% for item in reviews3 %}
+                                    <blockquote class="blockquote">
+                                        <p class="mb-0">{{ item.text }}</p>
+                                        <footer class="blockquote-footer">{{ item.name }}</footer>
+                                    </blockquote>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-sm-5 d-none d-md-block">
+                            <img src="../static/images/Client%20Image.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="reviews-button text-center">
+        <button class="btn btn-reviews-one"><a href="{% url 'reviews_add' %}">Оставить отзыв</a></button>
+        <button class="btn btn-reviews-two"><a href="{% url 'reviews_all' %}">Все отзывы</a></button>
+    </div>
 </section>
