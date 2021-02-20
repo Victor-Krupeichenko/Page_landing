@@ -15,7 +15,6 @@ class Index(MyFormLanding, ListView):
         context = super(Index, self).get_context_data(**kwargs)
         context['title'] = 'Мой сайт'
         context['lets'] = Lets.objects.filter(is_published=True)
-        context['reviews_header'] = ReviewsHeader.objects.filter(is_published=True)
         context['reviews1'] = Reviews.objects.filter(is_published=True)[:1]
         context['reviews2'] = Reviews.objects.filter(is_published=True)[1:2]
         context['reviews3'] = Reviews.objects.filter(is_published=True)[2:3]
