@@ -113,8 +113,8 @@ class GalleryImages(models.Model):
 
 
 class ReviewsHeader(models.Model):
-    title = models.CharField(max_length=16, verbose_name='Певый заголовок')
-    title_2 = models.CharField(max_length=16, verbose_name='Второй заголовок', blank=True,
+    title = models.CharField(max_length=21, verbose_name='Певый заголовок')
+    title_2 = models.CharField(max_length=21, verbose_name='Второй заголовок', blank=True,
                                help_text='Это поле необязательно к заполнению')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
