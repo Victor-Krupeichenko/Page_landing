@@ -16,15 +16,15 @@
     {% for item in contents %}
         <div class="tab-pane fade show active" id="{{ item.slug }}" role="tabpanel" aria-labelledby="home-tab">
             <p class="content-item">{{ item.content|truncatewords:50 }}</p>
-        <p><a href="{{ item.get_absolute_url }}" class="btn btn-shadow btn-pink">{{ item.btn_title }}</a></p>
-        <a href="#"><img class="src" src="{{ item.img.url }}" alt="" width="282" height="281"></a>
+            <p><a href="{{ item.get_absolute_url }}" class="btn btn-shadow btn-pink">{{ item.btn_title }}</a></p>
+            <a href="#"><img class="src" src="{{ item.img.url }}" alt="" width="282" height="281"></a>
         </div>
     {% endfor %}
     {% for item in contents_1 %}
         <div class="tab-pane fade show " id="{{ item.slug }}" role="tabpanel" aria-labelledby="home-tab">
             <p class="content-item">{{ item.content|truncatewords:50 }}</p>
-        <p><a href="{{ item.get_absolute_url }}" class="btn btn-shadow btn-pink">{{ item.btn_title }}</a></p>
-        <a href="#"><img class="src" src="{{ item.img.url }}" alt="" width="282" height="281"></a>
+            <p><a href="{{ item.get_absolute_url }}" class="btn btn-shadow btn-pink">{{ item.btn_title }}</a></p>
+            <a href="#"><img class="src" src="{{ item.img.url }}" alt="" width="282" height="281"></a>
         </div>
     {% endfor %}
 </div>
