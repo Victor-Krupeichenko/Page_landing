@@ -1,5 +1,24 @@
 <header class="main-header">
-{% include 'landing/inc/_nav.html' %}
+    {% include 'landing/inc/_nav.html' %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p class="form-messages">{{ message }}</p>
+            </div>
+            {% else %}
+                <div class="alert alert-{{ message.tags }} text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p class="form-messages">{{ message }}</p>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
     <div class="main-header-text text-center">
         {% for item in object_list %}
             <h3>{{ item.title }}</h3>
