@@ -1,10 +1,10 @@
 from django.views.generic import ListView, CreateView, DetailView
 from .models import *
-from .utils import MyFormLanding, MyFormReviewsAdd
+from .utils import MyMixinFormLanding, MyMixinFormReviewsAdd
 from .forms import FormReviews
 
 
-class Index(MyFormLanding, ListView):
+class Index(MyMixinFormLanding, ListView):
     model = Headers
     template_name = 'index.html'
 
@@ -23,7 +23,7 @@ class Index(MyFormLanding, ListView):
         return context
 
 
-class ReviewsCreate(CreateView, MyFormReviewsAdd):
+class ReviewsCreate(CreateView, MyMixinFormReviewsAdd):
     form_class = FormReviews
     template_name = 'reviews_add.html'
     success_url = reverse_lazy('home')
