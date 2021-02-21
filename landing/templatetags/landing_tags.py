@@ -1,6 +1,5 @@
 from django import template
-from landing.models import InspireHeader, Inspires, Crm, CrmContent, GalleriesTitles, GalleryImages, ReviewsHeader, \
-    Reviews
+from landing.models import InspireHeader, Inspires, Crm, CrmContent, GalleriesTitles, GalleryImages, ReviewsHeader
 
 register = template.Library()
 
@@ -57,7 +56,8 @@ def show_gallery_img():
             'gallery_img_1': gallery_img_1
             }
 
+
 @register.inclusion_tag('_inc/reviews_title.html')
 def show_reviews_title():
     titles = ReviewsHeader.objects.filter(is_published=True)
-    return {'titles':titles}
+    return {'titles': titles}
