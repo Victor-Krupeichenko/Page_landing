@@ -1,20 +1,22 @@
 <ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
     {% for item in gallery_img %}
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#{{ item.slug }}" role="tab"
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#{{ item.slug }}-gallery" role="tab"
                aria-controls="home" aria-selected="true">{{ item.title }}</a>
         </li>
     {% endfor %}
     {% for item in gallery_img_1 %}
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="profile-tab" data-toggle="tab"
-               href="#{{ item.slug }}" role="tab" aria-controls="profile" aria-selected="false">{{ item.title }}</a>
+               href="#{{ item.slug }}-gallery" role="tab" aria-controls="profile" aria-selected="false">
+                {{ item.title }}
+            </a>
         </li>
     {% endfor %}
 </ul>
 <div class="tab-content" id="myTabContent">
     {% for item in gallery_img %}
-        <div class="tab-pane fade show active" id="{{ item.slug }}" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active" id="{{ item.slug }}-gallery" role="tabpanel" aria-labelledby="home-tab">
             <div class="row gallery text-center">
                 <div class="col-sm-4 gallery-item">
                     <a href="{{ item.img_1.url }}">
@@ -65,7 +67,7 @@
         </div>
     {% endfor %}
     {% for item in gallery_img_1 %}
-        <div class="tab-pane fade show " id="{{ item.slug }}" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show " id="{{ item.slug }}-gallery" role="tabpanel" aria-labelledby="home-tab">
             <div class="gallery row">
                 <div class="col-sm-4 gallery-item">
                     <a href="{{ item.img_1.url }}">
