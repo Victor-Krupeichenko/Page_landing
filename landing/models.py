@@ -18,8 +18,7 @@ class Inspires(models.Model):
     slug = models.SlugField(max_length=31, unique=True, db_index=True, verbose_name='URLs')
     content = models.TextField(verbose_name='Контент')
     btn_title = models.CharField(max_length=10, default='Читать', blank=True)
-    img = models.ImageField(upload_to='images/django/%Y/%m/%d/', blank=True, verbose_name='Изображение',
-                            help_text='Это поле необязательно к заполнению')
+    img = models.ImageField(upload_to='images/django/%Y/%m/%d/', verbose_name='Изображение')
     attainment_title = models.CharField(max_length=31, verbose_name='Заголовок')
     attainment_content = models.TextField(max_length=111, verbose_name='Контент')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
