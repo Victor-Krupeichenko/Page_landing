@@ -1,6 +1,6 @@
 from django.db.models import F
 from django.views.generic import ListView, DetailView
-from .models import Notes, BlogCategories
+from .models import Notes, BlogCategories, Tags
 
 
 class NotesViews(ListView):
@@ -39,4 +39,17 @@ class ViewsNotes(DetailView):
         self.object.views = F('views') + 1
         self.object.save()
         self.object.refresh_from_db()
+        return context
+
+
+class NotesTags(ListView):
+    model = Notes
+    template_name = 'blog.html'
+
+    def get_queryset(self):
+        return Notes.objects.filter(tag__slug=self.kwargs['slug'], is_published=True)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(NotesTags, self).get_context_data(**kwargs)
+        context['title'] = f"Записи по тегу: {Tags.objects.get(slug=self.kwargs['slug'])}"
         return context
