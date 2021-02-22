@@ -19,6 +19,16 @@
                         <div class="item-views">
                             Колличество просмотров: {{ notes.views }}
                         </div>
+                        {% if notes.tag.exists %}
+                            <div class="notes-tags">
+                                <span>
+                                    Tags:
+                                    {% for item in notes.tag.all %}
+                                        <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                                    {% endfor %}
+                                </span>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ notes.title }}</h5>
