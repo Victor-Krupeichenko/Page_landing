@@ -1,10 +1,13 @@
 <div class="sidebar-widget widget-category">
-        <ul>
+    <ul class="list-group">
         {% for item in categories %}
-            <li><a href="{{ item.get_absolute_url }}">{{ item.title }}
-                <span>  -новостей- {{ item.cnt }}</span></a></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                <span class="badge badge-primary badge-pill">{{ item.cnt }}</span>
+            </li>
         {% endfor %}
     </ul>
-    <p><a href="{% url 'blog' %}"><i class="fa fa-share-square-o" aria-hidden="true"> Главная страница блога</i></a></p>
+    <p><a href="{% url 'blog' %}"><i class="fa fa-share-square-o" aria-hidden="true"> Главная страница блога</i></a>
+    </p>
 </div>
 
