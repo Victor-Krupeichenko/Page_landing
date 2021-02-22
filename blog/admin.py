@@ -13,3 +13,8 @@ class NotesAdmin(admin.ModelAdmin):
 class BlogCategoriesAdmin(admin.ModelAdmin):
     list_display = ['title']
     prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Tags)
+class TagsAdmin(admin.ModelAdmin):
+    list_display = ['title']
+    prepopulated_fields = {'slug':('title',)}
