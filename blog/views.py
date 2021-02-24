@@ -6,10 +6,12 @@ from .models import Notes, BlogCategories, Tags
 class NotesViews(ListView):
     model = Notes
     template_name = 'blog.html'
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NotesViews, self).get_context_data(**kwargs)
         context['title'] = 'My Blog'
+        context['category_select'] = 0
         return context
 
     def get_queryset(self):
@@ -19,6 +21,7 @@ class NotesViews(ListView):
 class NotesByCategories(ListView):
     template_name = 'blog.html'
     allow_empty = False
+    paginate_by = 5
 
     def get_queryset(self):
         return Notes.objects.filter(category__slug=self.kwargs['slug'], is_published=True)
@@ -26,6 +29,7 @@ class NotesByCategories(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NotesByCategories, self).get_context_data(**kwargs)
         context['title'] = BlogCategories.objects.get(slug=self.kwargs['slug'])
+        context['category_select'] = context['object_list'][0].category_id
         return context
 
 
@@ -45,6 +49,7 @@ class ViewsNotes(DetailView):
 class NotesTags(ListView):
     model = Notes
     template_name = 'blog.html'
+    paginate_by = 5
 
     def get_queryset(self):
         return Notes.objects.filter(tag__slug=self.kwargs['slug'], is_published=True)
