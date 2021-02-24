@@ -1,8 +1,13 @@
 {% extends 'landing/base.html' %}
+{% load static %}
 {% load blogs_tags %}
 
 {% block title %}
     <title>{{ notes.title }}</title>
+{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 {% endblock %}
 
 {% block navbar %}
@@ -10,11 +15,16 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 mb-5">
+                {% views_categories category_select=category_select %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-9">
                 <div class="card mb-3">
-                    <div class="card-header">
+                    <div class="card-header text-center">
                         {{ notes.category }}
                         <div class="item-views">
                             Колличество просмотров: {{ notes.views }}
@@ -31,7 +41,7 @@
                         {% endif %}
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ notes.title }}</h5>
+                        <h5 class="card-title text-center">{{ notes.title }}</h5>
                         <p class="card-text">{{ notes.content }}</p>
                     </div>
                     <div class="card-footer text-muted">
@@ -40,7 +50,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                {% views_categories %}
+                облако тегов
             </div>
         </div>
     </div>
