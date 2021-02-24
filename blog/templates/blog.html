@@ -1,23 +1,37 @@
 {% extends 'landing/base.html' %}
+
 {% load blogs_tags %}
 
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
 {% block title %}
-<title>{{ title }}</title>
+    <title>{{ title }}</title>
 {% endblock %}
 
 {% block navbar %}
-{% include 'blog/inc/_nav.html' %}
+    {% include 'blog/inc/_nav.html' %}
 {% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-9">
-                {% include 'blog_notes.html' %}
+    <section class="section-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    {% views_categories category_select=category_select %}
+                </div>
             </div>
-            <div class="col-md-3">
-                {% views_categories %}
+            <div class="row mt-5">
+                <div class="col-md-9">
+                    {% include 'blog_notes.html' %}
+                </div>
+                <div class="col-md-3">
+                    Облако тегов
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
