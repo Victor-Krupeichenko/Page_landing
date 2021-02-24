@@ -1,11 +1,11 @@
 {% for item in object_list %}
     <div class="card mb-3">
-        <div class="card-header">
+        <div class="card-header text-center">
             {{ item.category }}
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.content|truncatewords:9 }}</p>
+            <h5 class="card-title text-center">{{ item.title }}</h5>
+            <p class="card-text">{{ item.content|truncatewords:25 }}</p>
             <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more</a>
         </div>
         <div class="card-footer text-muted">
