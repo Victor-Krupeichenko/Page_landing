@@ -1,0 +1,98 @@
+.arrow_page_up {
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    font-size: 40px;
+    font-style: italic;
+    background-color: rgba(232, 32, 98, 0);
+    color: #37f733;
+    z-index: 1001;
+    border: none;
+    display: none;
+    transition: all .3s;
+    animation: scroll 1.2s infinite linear
+}
+
+@keyframes scroll {
+    0% {
+        transform: translate3d(0, -10%, 0)
+    }
+    50% {
+        transform: translate3d(0, 10%, 0) scale(1.4)
+    }
+    100% {
+        transform: translate3d(0, -10%, 0)
+    }
+}
+
+.arrow_page_up:hover {
+    transform: scale(1.5);
+    text-decoration: none;
+    outline: none
+}
+
+body {
+    background: url("../img/Shape_rewiews.png") no-repeat center fixed;
+    background-size: cover;
+}
+
+.nav li a {
+    display: block;
+    border: #7b33f9 solid 2px;
+    margin: 0 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #ffffff;
+    font-style: italic;
+    transition: all .2s;
+}
+
+.nav-fill .nav-item.selected {
+    font-size: 20px;
+    font-style: italic;
+    animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        color: #f42267;
+    }
+    50% {
+        color: #00b3ff;
+    }
+    100% {
+        color: #f42267;
+    }
+}
+
+.nav-link i {
+    color: #37f733;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all .2s;
+}
+
+.nav-link i:hover {
+    transform: scale(1.4);
+}
+
+.nav li a:hover {
+    background-color: rgba(123, 51, 249, .4);
+}
+
+.badge {
+    margin-left: 15px;
+    animation: test 2s linear infinite;
+}
+
+@keyframes test {
+    0% {
+        background-color: #7b33f9;
+    }
+    50% {
+        background-color: #f7145f;
+    }
+    100% {
+        background-color: #7b33f9;
+    }
+}
