@@ -1,0 +1,23 @@
+<nav class="nav nav-pills nav-fill">
+    {% if category_select == 0 %}
+        <li class="nav-item selected">Все записи</li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog' %}">Все записи
+                <i class="fa fa-reply-all" aria-hidden="true"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% for item in categories %}
+        {% if item.pk == category_select %}
+            <li class="nav-item selected">{{ item.title }}</li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ item.get_absolute_url }}">{{ item.title }}:
+                    <span class="badge badge-primary badge-pill">Записей: {{ item.cnt }}</span>
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</nav>
+
