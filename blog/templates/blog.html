@@ -1,6 +1,7 @@
 {% extends 'landing/base.html' %}
 
 {% load blogs_tags %}
+{% load popular_entries_tags %}
 
 {% load static %}
 
@@ -28,8 +29,8 @@
                 <div class="col-md-9">
                     {% include 'blog_notes.html' %}
                 </div>
-                <div class="col-md-3">
-                    Облако тегов
+                <div class="col-md-3 sidebar-popular">
+                    {% popular_notes %}
                 </div>
             </div>
         </div>
