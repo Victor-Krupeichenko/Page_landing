@@ -1,4 +1,5 @@
 <h2 class="popular-entries text-center">Популярные записи</h2>
+<div class="br"></div>
 <div class="popular">
     {% for item in notes %}
         <a href="{{ item.get_absolute_url }}"><h5 class="popular-title text-center">{{ item.title }}</h5>
