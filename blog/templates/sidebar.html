@@ -1,0 +1,11 @@
+<h2 class="popular-entries text-center">Популярные записи</h2>
+<div class="popular">
+    {% for item in notes %}
+        <a href="{{ item.get_absolute_url }}"><h5 class="popular-title text-center">{{ item.title }}</h5>
+        <p class="popular-views">Просмотры: {{ item.views }}</p>
+        <p class="popular-content">{{ item.content|truncatewords:5 }}</p>
+        <p class="popular-date">Дата публикации:{{ item.created_at|date:' d-m H:i' }}</p>
+        </a>
+    <div class="br"></div>
+    {% endfor %}
+</div>
