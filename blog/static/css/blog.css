@@ -100,17 +100,19 @@ body {
 .sidebar-popular h2 {
     margin-bottom: 5px;
     font-size: 18px;
-    background-color: rgba(255, 255, 255, .35);
+    /*background-color: rgba(255, 255, 255, .35);*/
     padding: 10px 0;
     color: #ffffff;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
-.popular-title{
+
+.popular-title {
     font-size: 16px;
 }
-.popular .br {
+
+.sidebar-popular .br {
     border: solid 1px #f42267;
 }
 
@@ -119,6 +121,11 @@ body {
     font-size: 14px;
     padding: 0;
     text-decoration: none;
+    display: block;
+}
+
+.popular a:hover {
+    background-color: rgba(255, 255, 255, .35);
 }
 
 .popular h5 {
@@ -135,4 +142,12 @@ body {
 
 }
 
+.tags i {
+    margin-left: 10px;
+    font-size: 19px;
+    color: #f42267;
+}
 
+.tags i:hover {
+    color: #42d3f7;
+}
