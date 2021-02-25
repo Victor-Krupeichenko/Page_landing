@@ -1,6 +1,7 @@
 {% extends 'landing/base.html' %}
 {% load static %}
 {% load blogs_tags %}
+{% load popular_entries_tags %}
 
 {% block title %}
     <title>{{ notes.title }}</title>
@@ -49,8 +50,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                облако тегов
+            <div class="col-md-3 sidebar-popular">
+                {% popular_notes %}
             </div>
         </div>
     </div>
