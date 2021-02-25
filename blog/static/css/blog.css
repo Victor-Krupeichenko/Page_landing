@@ -96,3 +96,43 @@ body {
         background-color: #7b33f9;
     }
 }
+
+.sidebar-popular h2 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, .35);
+    padding: 10px 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+.popular-title{
+    font-size: 16px;
+}
+.popular .br {
+    border: solid 1px #f42267;
+}
+
+.popular a {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 0;
+    text-decoration: none;
+}
+
+.popular h5 {
+    margin-top: 10px;
+}
+
+.popular p {
+    margin: 0;
+    padding: 0;
+}
+
+.popular .popular-date {
+    margin-bottom: 10px;
+
+}
+
+
