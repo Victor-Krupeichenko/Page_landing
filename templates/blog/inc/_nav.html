@@ -1,10 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-dark">
+{% load static %}
+<img class="blog-header-img" src="{% static 'img/blogs1.jpg' %}" alt="">
+<nav class="navbar navbar-expand-lg navbar-light text-center">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-align-justify" aria-hidden="true"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav blog-item">
             <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
