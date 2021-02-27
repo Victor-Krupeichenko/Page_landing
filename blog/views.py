@@ -6,7 +6,7 @@ from .models import Notes, BlogCategories, Tags
 class NotesViews(ListView):
     model = Notes
     template_name = 'blog.html'
-    paginate_by = 5
+    paginate_by = 4
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NotesViews, self).get_context_data(**kwargs)
@@ -21,7 +21,7 @@ class NotesViews(ListView):
 class NotesByCategories(ListView):
     template_name = 'blog.html'
     allow_empty = False
-    paginate_by = 5
+    paginate_by = 4
 
     def get_queryset(self):
         return Notes.objects.filter(category__slug=self.kwargs['slug'], is_published=True)
