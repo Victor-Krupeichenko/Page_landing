@@ -1,39 +1,62 @@
 {% extends 'landing/base.html' %}
+{% load static %}
 
 {% load blogs_tags %}
 {% load popular_entries_tags %}
-
-{% load static %}
-
-{% block extrastyle %}
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-{% endblock %}
 
 {% block title %}
     <title>{{ title }}</title>
 {% endblock %}
 
-{% block navbar %}
-    {% include 'blog/inc/_nav.html' %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 {% endblock %}
 
 {% block content %}
-    <section class="section-blog">
+    <div class="section-blog">
+        {% include 'blog/inc/_nav.html' %}
+        <div class="item-category">
+            {% views_categories category_select=category_select %}
+        </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                    {% views_categories category_select=category_select %}
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-md-9">
+                <div class="col-md-8">
+                    {% include 'slider.html' %}
                     {% include 'blog_notes.html' %}
                 </div>
-                <div class="col-md-3 sidebar-popular">
+                <div class="col-md-4 sidebar-popular">
                     {% popular_notes %}
                     {% tags_views %}
                 </div>
             </div>
         </div>
-    </section>
+        {% if page_obj.has_other_pages %}
+            <nav aria-label="...">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for item in page_obj.paginator.page_range %}
+                        {% if page_obj.number == item %}
+                            <li class="page-item active"><a class="page-link" href="?page={{ item }}">{{ item }}</a>
+                            </li>
+                        {% elif item > page_obj.number|add:-3 and item < page_obj.number|add:3 %}
+                            <li class="page-item"><a class="page-link" href="?page={{ item }}">{{ item }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
 {% endblock %}
