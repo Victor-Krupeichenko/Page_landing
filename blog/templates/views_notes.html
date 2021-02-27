@@ -11,49 +11,42 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 {% endblock %}
 
-{% block navbar %}
-    {% include 'blog/inc/_nav.html' %}
-{% endblock %}
-
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9 mb-5">
-                {% views_categories category_select=category_select %}
-            </div>
+    <section class="section-blog">
+        {% include 'blog/inc/_nav.html' %}
+        <div class="item-category">
+            {% views_categories category_select=category_select %}
         </div>
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card mb-3">
-                    <div class="card-header text-center">
-                        {{ notes.category }}
-                        <div class="item-views">
-                            Колличество просмотров: {{ notes.views }}
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mt-5 notes">
+                    <h5 class="title-notes text-center">{{ notes.title }}</h5>
+                    <p class="notes-category">Категория: <a href="{{ notes.category.get_absolute_url }}">
+                        {{ notes.category }}</a></p>
+                    <p class="notes-tag">
                         {% if notes.tag.exists %}
-                            <div class="notes-tags">
-                                <span>
-                                    Tags:
-                                    {% for item in notes.tag.all %}
-                                        <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
-                                    {% endfor %}
-                                </span>
-                            </div>
+                            <span>
+                        <i class="fa fa-tags" aria-hidden="true">
+                                {% for item in notes.tag.all %}
+                                    <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                                {% endfor %}
+                        </i>
+                    </span>
                         {% endif %}
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ notes.title }}</h5>
-                        <p class="card-text">{{ notes.content }}</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Опубликовано: {{ notes.created_at|date:"Y-m-d H:i:s" }}
-                    </div>
+                    </p>
+                    <p class="notes-view"><i class="fa fa-eye" aria-hidden="true"> {{ notes.views }}</i></p>
+                    {% if notes.image %}
+                        <p><img src="{{ notes.image.url }}" alt=""></p>
+                    {% endif %}
+                    <p class="notes-content">{{ notes.content|safe|linebreaks }}</p>
+                    <p class="notes-is_published"><i class="fa fa-calendar-check-o" aria-hidden="true">
+                        {{ notes.created_at|date:"d-m-y  H:i" }}</i></p>
+                </div>
+                <div class="col-md-4 sidebar-popular">
+                    {% popular_notes %}
+                    {% tags_views %}
                 </div>
             </div>
-            <div class="col-md-3 sidebar-popular">
-                {% popular_notes %}
-                {% tags_views %}
-            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
