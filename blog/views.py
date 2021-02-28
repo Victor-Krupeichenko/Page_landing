@@ -1,4 +1,4 @@
-from django.db.models import F
+from django.db.models import F, Q
 from django.views.generic import ListView, DetailView
 from .models import Notes, BlogCategories, Tags
 
@@ -57,4 +57,18 @@ class NotesTags(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NotesTags, self).get_context_data(**kwargs)
         context['title'] = f"Записи по тегу: {Tags.objects.get(slug=self.kwargs['slug'])}"
+        return context
+
+
+class Search(ListView):
+    template_name = 'blog.html'
+    paginate_by = 1
+
+    def get_queryset(self):
+        return Notes.objects.filter(Q(title__icontains=self.request.GET.get('search')) |
+                                    Q(content__icontains=self.request.GET.get('search')))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(Search, self).get_context_data(**kwargs)
+        context['search'] = f"search={self.request.GET.get('search')}&"
         return context
