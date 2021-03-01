@@ -210,4 +210,45 @@ body {
 .notes .notes-is_published {
     margin-top: 15px;
 }
+.search .form-control{
+    position: relative;
+    width: 70%;
+    border-radius: 25px;
+    border-color: #00b3ff;
+}
+.search .form-control::placeholder{
+    padding: 10px 10px;
+    font-style: italic;
+}
+.search .form-search{
+    border: none;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-style: italic;
+    border-color: #728197;
+}
+.search .btn{
+    margin-left: 72%;
+    margin-top: -20%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #fff;
+    background-color: #7b33f9;
+    padding: 5px 10px;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 25px;
+    box-shadow: 0 15px 16px #550ad8;
+    transition: all .2s
+}
+.search .btn:hover{
+    transform: scale(.9);
+    box-shadow: 0 7px 16px #550ad8;
 
+}
+.search-not-found{
+    color: #f7145f;
+    font-size: 18px;
+    font-style: italic;
+}
