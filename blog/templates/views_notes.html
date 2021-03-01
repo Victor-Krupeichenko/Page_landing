@@ -36,13 +36,14 @@
                     </p>
                     <p class="notes-view"><i class="fa fa-eye" aria-hidden="true"> {{ notes.views }}</i></p>
                     {% if notes.image %}
-                        <p><img src="{{ notes.image.url }}" alt=""></p>
+                        <p class="text-center"><img src="{{ notes.image.url }}" alt=""></p>
                     {% endif %}
                     <p class="notes-content">{{ notes.content|safe|linebreaks }}</p>
                     <p class="notes-is_published"><i class="fa fa-calendar-check-o" aria-hidden="true">
                         {{ notes.created_at|date:"d-m-y  H:i" }}</i></p>
                 </div>
                 <div class="col-md-4 sidebar-popular">
+                    {% include 'search.html' %}
                     {% popular_notes %}
                     {% tags_views %}
                 </div>
