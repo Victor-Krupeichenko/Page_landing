@@ -15,8 +15,10 @@
             </div>
         </a>
         {% empty %}
-        <h5 class="empty-search">
-            По запросу: <span class="search-not-found">{{ search|cut:"search="|cut:"&" }}</span> ничего не найдено!
+        <h5 class="empty-search mt-5">
+            <i class="fa fa-search" aria-hidden="true"></i>По запросу: <span
+                class="search-not-found text-center">{{ search|cut:"search="|cut:"&" }}</span>
+            ничего не найдено!
         </h5>
     {% endfor %}
 </div>
