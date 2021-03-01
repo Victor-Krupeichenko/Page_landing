@@ -1,8 +1,9 @@
-<h2 class="tags-section text-center mt-4">Теги</h2>
+<h2 class="tags-section text-center mt-3"><i class="fa fa-tags" aria-hidden="true"><span>Теги</span></i></h2>
 <div class="tags">
     {% for item in tags %}
-        <span>
-            <a href="{{ item.get_absolute_url }}"><i class="fa fa-tag" aria-hidden="true">{{ item.title }}</i></a>
+        <span class="tag">
+            <a href="{{ item.get_absolute_url }}"><i class="fa fa-tag" aria-hidden="true">
+                <span>{{ item.title }}</span></i></a>
         </span>
     {% endfor %}
 </div>
