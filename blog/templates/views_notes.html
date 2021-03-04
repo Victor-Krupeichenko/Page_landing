@@ -1,5 +1,8 @@
 {% extends 'landing/base.html' %}
+
 {% load static %}
+
+{% load ratings %}
 {% load blogs_tags %}
 {% load popular_entries_tags %}
 
@@ -19,7 +22,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 mt-5 notes">
+                <div class="col-md-8 mt-5 mb-5 notes">
                     <h5 class="title-notes text-center">{{ notes.title }}</h5>
                     <p class="notes-category">Категория: <a href="{{ notes.category.get_absolute_url }}">
                         {{ notes.category }}</a></p>
@@ -36,11 +39,16 @@
                     </p>
                     <p class="notes-view"><i class="fa fa-eye" aria-hidden="true"> {{ notes.views }}</i></p>
                     {% if notes.image %}
-                        <p class="text-center"><img src="{{ notes.image.url }}" alt=""></p>
+                        <p class="text-center"><img src="{{ notes.image.url }}" alt="" width="281"></p>
+                        {% else %}
+                        <p class="text-center"><img src="{% static 'img/no_foto.png' %}" alt="" width="281" height="281"></p>
                     {% endif %}
                     <p class="notes-content">{{ notes.content|safe|linebreaks }}</p>
                     <p class="notes-is_published"><i class="fa fa-calendar-check-o" aria-hidden="true">
-                        {{ notes.created_at|date:"d-m-y  H:i" }}</i></p>
+                        {{ notes.created_at|date:"d-m-y  H:i" }}</i><span class=" src float-right">
+                        <a href="{{ notes.category.get_absolute_url }}">Все записи по категории
+                            {{ notes.category }}</a></span></p>
+                    {% ratings notes %}
                 </div>
                 <div class="col-md-4 sidebar-popular">
                     {% include 'search.html' %}
