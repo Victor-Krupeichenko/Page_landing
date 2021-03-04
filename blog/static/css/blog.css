@@ -9,8 +9,10 @@
     z-index: 1001;
     border: none;
     display: none;
+    outline: none;
     transition: all .3s;
-    animation: scroll 1.2s infinite linear
+    animation: scroll 1.2s infinite linear;
+
 }
 
 @keyframes scroll {
@@ -28,6 +30,7 @@
 .arrow_page_up:hover {
     transform: scale(1.5);
     text-decoration: none;
+    border: none;
     outline: none
 }
 
@@ -149,7 +152,27 @@ body {
 
 }
 
-.section-blog a {
+.section-blog .card-body .btn {
+    background-color: #00b3ff;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-left: 8px;
+    margin-bottom: -20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 16px #2a6ca0;
+    transition: all .3s;
+}
+
+.section-blog .card-body .btn:hover {
+    box-shadow: 0 5px 8px #2a6ca0;
+}
+
+.section-blog .card-body a {
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -163,10 +186,22 @@ body {
     box-shadow: 0 20px 20px -20px rgba(196, 186, 186, 1);
 }
 
+.section-blog .card-body .star-ratings-rating-average,
+.star-ratings-rating-count,
+.star-ratings-rating-user,
+.log-in-to-rate {
+    display: none;
+}
+
+.section-blog .card-body .star-ratings {
+    pointer-events: none;
+}
+
 .section-blog .pagination {
     margin-bottom: 3%;
     margin-top: 1%;
     margin-left: 32%;
+
 }
 
 .section-blog .page-link {
@@ -182,6 +217,7 @@ body {
 
 .section-blog .page-item.active .page-link {
     background-color: #2a6ca0;
+    border-radius: 50%;
     border: none;
 }
 
@@ -189,6 +225,7 @@ body {
 .section-blog .fa-angle-double-left {
     color: #2a6ca0;
     font-size: 25px;
+
     transition: all .3s;
     animation: double-right 1.2s infinite linear;
 }
@@ -251,6 +288,7 @@ body {
     box-shadow: 0 7px 16px #550ad8;
 
 }
+
 .empty-search {
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
@@ -258,12 +296,13 @@ body {
     font-weight: 600;
 
 }
-.empty-search .fa{
+
+.empty-search .fa {
     margin-right: 10px;
     color: #2a6ca0;
 }
 
-.empty-search span{
+.empty-search span {
     color: #f7145f;
     font-size: 18px;
     font-style: italic;
@@ -283,12 +322,13 @@ body {
     padding: 5px;
 }
 
-.sidebar-popular .popular-entries .fa{
+.sidebar-popular .popular-entries .fa {
     color: #7b33f9;
     margin-left: -25%;
 
 }
-.sidebar-popular .popular-entries span{
+
+.sidebar-popular .popular-entries span {
     margin-left: 50px;
     font-family: "Palatino Linotype", sans-serif;
     font-style: italic;
@@ -296,6 +336,7 @@ body {
     font-size: 18px;
     color: #4a5464;
 }
+
 .sidebar-popular .br {
     border-top: 1px solid #7b33f9;
 }
@@ -306,7 +347,7 @@ body {
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 28%;
+    margin-left: 30%;
 }
 
 .popular img {
@@ -316,18 +357,19 @@ body {
 }
 
 .popular p {
-    margin: 0;
     padding: 0;
     font-family: "Palatino Linotype", sans-serif;
     font-size: 14px;
+    margin: 0 0 0 110px;
 }
 
 .popular .fa {
     color: #00b3ff;
+    margin-left: 8px;
 }
 
 .popular .fa span {
-    margin-left: 5px;
+    margin-left: 10px;
     color: #f207af;
 }
 
@@ -340,20 +382,24 @@ body {
     text-transform: uppercase;
     font-style: italic;
     transition: all .3s;
+    margin-left: 8px;
 }
 
 .popular .btn a {
     color: #ffffff;
+    text-decoration: none;
 }
 
 .popular .btn:hover {
     box-shadow: 0 3px 6px #000000;
 }
-.sidebar-popular .tags-section .fa{
+
+.sidebar-popular .tags-section .fa {
     margin-left: -45%;
     color: #7b33f9;
 }
-.sidebar-popular .tags-section span{
+
+.sidebar-popular .tags-section span {
     margin-left: 120px;
     font-family: "Palatino Linotype", sans-serif;
     font-style: italic;
@@ -361,6 +407,7 @@ body {
     font-size: 18px;
     color: #4a5464;
 }
+
 .sidebar-popular .tags .tag {
     margin-left: 10px;
 }
@@ -374,3 +421,29 @@ body {
     color: #728197;
     font-size: 18px;
 }
+
+.notes .star-ratings-rating-average {
+    color: #728197;
+    display: block;
+    margin-top: -10px;
+    font-size: 14px;
+}
+
+.notes .star-ratings-rating-count {
+    color: #728197;
+    display: block;
+    margin-left: 80px;
+    margin-top: -21px;
+    font-size: 14px;
+}
+
+.notes .star-ratings-rating-count b {
+    color: #000000;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.notes .star-ratings-rating-user {
+    display: none;
+}
+
