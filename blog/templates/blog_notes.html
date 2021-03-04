@@ -1,19 +1,22 @@
+{% load ratings %}
 <div class="row row-cols-1 row-cols-md-2">
     {% for item in object_list %}
-        <a href="{{ item.get_absolute_url }}">
-            <div class="col card-item mb-4 ">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ item.title }}</h5>
-                        <p class="card-text">{{ item.content|truncatewords:25 }}</p>
-                        <small class="text-muted">
-                            <i class="fa fa-calendar" aria-hidden="true"> {{ item.created_at }}</i>
-                            <i class="fa fa-eye ml-5" aria-hidden="true">{{ item.views }}</i>
-                        </small>
-                    </div>
+        <div class="col card-item mb-4 ">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ item.title }}</h5>
+                    {% ratings item icon_height=12 icon_width=12 %}
+                    <p class="card-text">{{ item.content|truncatewords:20 }}</p>
+                    <small class="text-muted">
+                        <i class="fa fa-calendar" aria-hidden="true"> {{ item.created_at }}</i>
+                        <i class="fa fa-eye ml-5" aria-hidden="true">{{ item.views }}</i>
+                    </small>
+                    <p>
+                        <button class="btn"><a href="{{ item.get_absolute_url }}">читать</a></button>
+                    </p>
                 </div>
             </div>
-        </a>
+        </div>
         {% empty %}
         <h5 class="empty-search mt-5">
             <i class="fa fa-search" aria-hidden="true"></i>По запросу: <span
