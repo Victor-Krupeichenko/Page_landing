@@ -19,7 +19,7 @@ class Notes(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy('views_notes', kwargs={'slug':self.slug})
+        return reverse_lazy('views_notes', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Запись'
@@ -56,4 +56,22 @@ class Tags(models.Model):
         ordering = ['title']
 
     def get_absolute_url(self):
-        return reverse_lazy('tags_notes', kwargs={'slug':self.slug})
+        return reverse_lazy('tags_notes', kwargs={'slug': self.slug})
+
+
+class CommentNotes(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Имя')
+    email = models.EmailField(verbose_name='Email-адрес', blank=True)
+    text = models.TextField(max_length=700, verbose_name='Сообщение')
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,
+                               verbose_name='Родитель')
+    note = models.ForeignKey(Notes, on_delete=models.CASCADE, verbose_name='Запись')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
+    def __str__(self):
+        return f'{self.name} {self.note}'
+
+    class Meta:
+        verbose_name = 'Коментарий'
+        verbose_name_plural = 'Коментарии'
