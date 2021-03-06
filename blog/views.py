@@ -1,6 +1,10 @@
+from django.contrib import messages
 from django.db.models import F, Q
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
+from django.views.generic.base import View
 from .models import Notes, BlogCategories, Tags
+from .forms import CommentForm
 
 
 class NotesViews(ListView):
@@ -72,3 +76,18 @@ class Search(ListView):
         context = super(Search, self).get_context_data(**kwargs)
         context['search'] = f"search={self.request.GET.get('search')}&"
         return context
+
+
+class AddComment(View):
+    def post(self, request, pk):
+        form = CommentForm(request.POST)
+        note = Notes.objects.get(id=pk)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.note = note
+            form.save()
+            messages.success(request, "Ваш комментарий отправлен")
+            return redirect(note.get_absolute_url())
+        else:
+            messages.error(request, 'Ошибка отправки комментария')
+            return redirect(note.get_absolute_url())
