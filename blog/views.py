@@ -3,7 +3,8 @@ from django.db.models import F, Q
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
-from .models import Notes, BlogCategories, Tags
+from django.views.generic.list import MultipleObjectMixin
+from .models import Notes, BlogCategories, Tags, CommentNotes
 from .forms import CommentForm
 
 
@@ -37,13 +38,15 @@ class NotesByCategories(ListView):
         return context
 
 
-class ViewsNotes(DetailView):
+class ViewsNotes(DetailView, MultipleObjectMixin):
     model = Notes
     template_name = 'views_notes.html'
     context_object_name = 'notes'
+    paginate_by = 4
 
     def get_context_data(self, **kwargs):
-        context = super(ViewsNotes, self).get_context_data(**kwargs)
+        object_list = CommentNotes.objects.filter(note=self.object)
+        context = super(ViewsNotes, self).get_context_data(object_list=object_list, **kwargs)
         self.object.views = F('views') + 1
         self.object.save()
         self.object.refresh_from_db()
@@ -66,7 +69,7 @@ class NotesTags(ListView):
 
 class Search(ListView):
     template_name = 'blog.html'
-    paginate_by = 1
+    paginate_by = 4
 
     def get_queryset(self):
         return Notes.objects.filter(Q(title__icontains=self.request.GET.get('search')) |
