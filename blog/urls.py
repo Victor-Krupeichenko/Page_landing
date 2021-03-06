@@ -7,4 +7,5 @@ urlpatterns = [
     path('vievs-notes/<str:slug>/', ViewsNotes.as_view(), name='views_notes'),
     path('tags-notes/<str:slug>/', NotesTags.as_view(), name='tags_notes'),
     path('search/', Search.as_view(), name='search'),
+    path('commit-notes/<int:pk>/', AddComment.as_view(), name='commit_notes'),
 ]
