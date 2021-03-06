@@ -447,3 +447,49 @@ body {
     display: none;
 }
 
+.section-blog .comment-message {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.section-blog .comment-message p {
+    margin-bottom: 5px
+}
+
+.section-blog .comment-message span {
+    color: #f207af;
+}
+
+.section-blog .message-form input {
+    border-radius: 15px;
+    padding-left: 25px;
+    color: #4a5464;
+    font-style: italic;
+
+}
+
+.section-blog .message-form textarea {
+    border-radius: 15px;
+    margin-top: -10px;
+    width: 100%;
+    padding-left: 25px;
+    color: #4a5464;
+    font-style: italic;
+}
+
+.section-blog .btn-form {
+    background-color: #7b33f9;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-style: italic;
+    margin-left: 83%;
+    transition: all .3s;
+}
+
+.section-blog .btn-form:hover {
+    box-shadow: 0 5px 6px #4e0acc;
+    transform: scale(.9);
+}
