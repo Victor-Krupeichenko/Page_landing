@@ -23,6 +23,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 mt-5 mb-5 notes">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.tags == 'error' %}
+                                <div class="alert alert-danger text-center comment-message" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span class="message-close" aria-hidden="true">&times;</span>
+                                    </button>
+                                    <p class="form-comment">{{ message }}</p>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-{{ message.tags }} text-center comment-message" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <p class="form-comment">{{ message }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                     <h5 class="title-notes text-center">{{ notes.title }}</h5>
                     <p class="notes-category">Категория: <a href="{{ notes.category.get_absolute_url }}">
                         {{ notes.category }}</a></p>
@@ -40,8 +59,9 @@
                     <p class="notes-view"><i class="fa fa-eye" aria-hidden="true"> {{ notes.views }}</i></p>
                     {% if notes.image %}
                         <p class="text-center"><img src="{{ notes.image.url }}" alt="" width="281"></p>
-                        {% else %}
-                        <p class="text-center"><img src="{% static 'img/no_foto.png' %}" alt="" width="281" height="281"></p>
+                    {% else %}
+                        <p class="text-center"><img src="{% static 'img/no_foto.png' %}" alt="" width="281"
+                                                    height="281"></p>
                     {% endif %}
                     <p class="notes-content">{{ notes.content|safe|linebreaks }}</p>
                     <p class="notes-is_published"><i class="fa fa-calendar-check-o" aria-hidden="true">
@@ -49,6 +69,23 @@
                         <a href="{{ notes.category.get_absolute_url }}">Все записи по категории
                             {{ notes.category }}</a></span></p>
                     {% ratings notes %}
+                    <form action="{% url 'commit_notes' notes.id %}" method="post" class="message-form mb-3">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="contactcoment" class="editComment"></label>
+                                <input type="text" class="form-control border" id="contactcoment" name="name"
+                                       placeholder="имя">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="contactcoment" class="editComment"></label>
+                                <input type="email" class="form-control border" id="contactcoment" placeholder="email">
+                            </div>
+                            <textarea class="form-control border" name="text" id="" rows="5"
+                                      placeholder="Сообщение:"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-form mt-2">Отправить</button>
+                    </form>
                 </div>
                 <div class="col-md-4 sidebar-popular">
                     {% include 'search.html' %}
