@@ -18,6 +18,9 @@ class Notes(models.Model):
     def __str__(self):
         return self.title
 
+    def get_no_parent(self):
+        return self.commentnotes_set.filter(parent__isnull=True)
+
     def get_absolute_url(self):
         return reverse_lazy('views_notes', kwargs={'slug': self.slug})
 
@@ -62,7 +65,7 @@ class Tags(models.Model):
 class CommentNotes(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     email = models.EmailField(verbose_name='Email-адрес', blank=True)
-    text = models.TextField(max_length=700, verbose_name='Сообщение')
+    text = models.TextField(max_length=5000, verbose_name='Сообщение')
     parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,
                                verbose_name='Родитель')
     note = models.ForeignKey(Notes, on_delete=models.CASCADE, verbose_name='Запись')
