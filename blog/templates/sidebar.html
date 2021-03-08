@@ -1,3 +1,4 @@
+{% load static %}
 <h2 class="popular-entries text-center"><i class="fa fa-list-alt" aria-hidden="true">
     <span>Популярные записи</span></i></h2>
 <div class="br"></div>
@@ -6,6 +7,8 @@
         <h5 class="popular-title">{{ item.title }}</h5>
         {% if item.image %}
         <img src="{{ item.image.url }}" alt="" class="float-left">
+         {% else %}
+         <img src="{% static 'img/no_foto.png' %}" alt="" class="float-left">
         {% endif %}
         <i class="fa fa-eye" aria-hidden="true"><span>{{ item.views }}</span></i>
         <p class="popular-date">Дата публикации:{{ item.created_at|date:' d-m H:i' }}</p>
