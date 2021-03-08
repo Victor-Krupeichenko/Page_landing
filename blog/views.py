@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
-from .models import Notes, BlogCategories, Tags, CommentNotes
+from .models import Notes, BlogCategories, Tags
 from .forms import CommentForm
 
 
@@ -42,10 +42,10 @@ class ViewsNotes(DetailView, MultipleObjectMixin):
     model = Notes
     template_name = 'views_notes.html'
     context_object_name = 'notes'
-    paginate_by = 4
+    paginate_by = 15
 
     def get_context_data(self, **kwargs):
-        object_list = CommentNotes.objects.filter(note=self.object)
+        object_list = Notes.get_no_parent(self.object)
         context = super(ViewsNotes, self).get_context_data(object_list=object_list, **kwargs)
         self.object.views = F('views') + 1
         self.object.save()
@@ -87,10 +87,13 @@ class AddComment(View):
         note = Notes.objects.get(id=pk)
         if form.is_valid():
             form = form.save(commit=False)
+            if request.POST.get('parent', None):
+                form.parent_id = int(request.POST.get('parent'))
             form.note = note
             form.save()
-            messages.success(request, "Ваш комментарий отправлен")
+            messages.success(request, "Ваш комментарий добавлен")
             return redirect(note.get_absolute_url())
         else:
-            messages.error(request, 'Ошибка отправки комментария')
+            messages.error(request, 'Ошибка добовления комментария')
+
             return redirect(note.get_absolute_url())
