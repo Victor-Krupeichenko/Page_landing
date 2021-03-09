@@ -4,7 +4,11 @@
         <div class="col card-item mb-4 ">
             <div class="card h-100">
                 <div class="card-body">
+                    {% if search %}
+                    <h5 class="card-title text-center"><mark>{{ item.title }}</mark></h5>
+                        {% else %}
                     <h5 class="card-title text-center">{{ item.title }}</h5>
+                    {% endif %}
                     {% ratings item icon_height=12 icon_width=12 %}
                     <p class="card-text">{{ item.content|truncatewords:20 }}</p>
                     <small class="text-muted">
@@ -20,7 +24,7 @@
         {% empty %}
         <h5 class="empty-search mt-5">
             <i class="fa fa-search" aria-hidden="true"></i>По запросу: <span
-                class="search-not-found text-center">{{ search|cut:"search="|cut:"&" }}</span>
+                class="search-not-found text-center"><mark>{{ search|cut:"search="|cut:"&" }}</mark></span>
             ничего не найдено!
         </h5>
     {% endfor %}
