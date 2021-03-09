@@ -69,6 +69,7 @@
                             <p class="card-text"><small class="text-muted">{{ item.created_at }}</small>
                             <a class="answer-messages" href="#formMessages"
                                onclick="addMessages('{{ item.name }}', '{{ item.id }}')">Ответить</a></p>
+                            <p><a href="{% url 'messages_delete' item.id %}">удалить</a></p>
                             {% for answer  in item.commentnotes_set.all %}
                                 <div class="border"></div>
                                 {% if item.photo %}
