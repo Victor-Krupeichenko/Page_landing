@@ -1,10 +1,11 @@
 from django.contrib import messages
 from django.db.models import F, Q
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
-from .models import Notes, BlogCategories, Tags
+from .models import Notes, BlogCategories, Tags, CommentNotes
 from .forms import CommentForm
 
 
@@ -97,3 +98,10 @@ class AddComment(View):
             messages.error(request, 'Ошибка добовления комментария')
 
             return redirect(note.get_absolute_url())
+
+
+def delete_messages(request, pk):
+    comment = CommentNotes.objects.get(pk=pk)
+    comment.delete()
+    messages.success(request, 'комментарий удалён')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
