@@ -1,10 +1,13 @@
 from django.db import models
 from django.urls import reverse_lazy
+from autoslug import AutoSlugField
+from uuslug import uuslug
 
 
 class Notes(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название')
-    slug = models.SlugField(max_length=150, unique=True, db_index=True, verbose_name='URLs')
+    slug = AutoSlugField(max_length=150, unique=True, db_index=True, verbose_name='URLs',
+                         populate_from=lambda instance: instance.title, slugify=lambda value: value.replace(' ','-'))
     content = models.TextField(verbose_name='Текст статьи', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
@@ -17,6 +20,10 @@ class Notes(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = uuslug(self.title, instance=self)
+        super(Notes, self).save(*args, **kwargs)
 
     def get_no_parent(self):
         return self.commentnotes_set.filter(parent__isnull=True)
