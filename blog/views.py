@@ -105,6 +105,7 @@ def delete_messages(request, pk):
     messages.success(request, 'комментарий удалён')
     return HttpResponse('<script>history.back();</script>')
 
+
 class CreatedNotes(CreateView):
     form_class = NotesAddForm
     template_name = '_inc/form_add_notes.html'
