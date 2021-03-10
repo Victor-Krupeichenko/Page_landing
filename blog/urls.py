@@ -9,4 +9,5 @@ urlpatterns = [
     path('search/', Search.as_view(), name='search'),
     path('commit-notes/<int:pk>/', AddComment.as_view(), name='commit_notes'),
     path('delete-messages/<int:pk>/', delete_messages, name='messages_delete'),
+    path('notes/create-notes/', CreatedNotes.as_view(), neme='created_notes'),
 ]
