@@ -2,11 +2,11 @@ from django.contrib import messages
 from django.db.models import F, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
 from .models import Notes, BlogCategories, Tags, CommentNotes
-from .forms import CommentForm
+from .forms import CommentForm, NotesAddForm
 
 
 class NotesViews(ListView):
@@ -104,3 +104,12 @@ def delete_messages(request, pk):
     comment.delete()
     messages.success(request, 'комментарий удалён')
     return HttpResponse('<script>history.back();</script>')
+
+class CreatedNotes(CreateView):
+    form_class = NotesAddForm
+    template_name = '_inc/form_add_notes.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CreatedNotes, self).get_context_data(**kwargs)
+        context['title'] = 'Создать запись'
+        return context
