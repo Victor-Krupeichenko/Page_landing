@@ -8,7 +8,7 @@ from .models import *
 class NotesAdmin(admin.ModelAdmin):
     list_display = ['title', 'is_published']
     list_editable = ['is_published']
-    prepopulated_fields = {'slug': ('title',)}
+    # prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(BlogCategories)
