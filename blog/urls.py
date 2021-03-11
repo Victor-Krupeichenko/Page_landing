@@ -11,4 +11,5 @@ urlpatterns = [
     path('delete-messages/<int:pk>/', delete_messages, name='messages_delete'),
     path('notes/create-notes/', CreatedNotes.as_view(), name='created_notes'),
     path('notes-delete/<int:pk>/', delete_notes, name='delete_notes'),
+    path('update-notes/<int:pk>/', NotesUpdate.as_view(), name='update_notes')
 ]
