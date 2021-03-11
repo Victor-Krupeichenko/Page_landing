@@ -50,7 +50,7 @@
                         {{ notes.created_at|date:"d-m-y  H:i" }}</i><span class=" src float-right">
                         <a href="{{ notes.category.get_absolute_url }}">Все записи по категории
                             {{ notes.category }}</a></span></p>
-                    <a href="{% url 'update_notes' notes.id %}">Обновить</a>
+                    <a href="{% url 'update_notes' notes.slug %}">Обновить</a>
                         {% include '_inc/delete_notes.html' %}
                     {% ratings notes %}
                     {% if notes.commentnotes_set.count == 0 %}
