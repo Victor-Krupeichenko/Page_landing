@@ -1,0 +1,22 @@
+<button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#exampleModalNotes">
+    <a href="{% url 'delete_notes' notes.id %}"></a>удалить
+</button>
+<div class="modal fade" id="exampleModalNotes" tabindex="-1"
+     aria-labelledby="exampleModalNotesLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalNotesLabel">Удалить текущую запись</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger"><a
+                        href="{% url 'delete_notes' notes.id %}">УДАЛИТЬ</a></button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    НЕТ
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
