@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.db.models import F, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
 from .models import Notes, BlogCategories, Tags, CommentNotes
@@ -121,3 +121,15 @@ def delete_notes(request, pk):
     note.delete()
     messages.success(request, 'Запись удалена')
     return redirect('blog')
+
+
+class NotesUpdate(UpdateView):
+    model = Notes
+    form_class = NotesAddForm
+    template_name = '_inc/form_add_notes.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(NotesUpdate, self).get_context_data(**kwargs)
+        context['title'] = f"Редактировать запись: {Notes.objects.get(pk=self.kwargs['pk'])}"
+        context['update'] = True
+        return context
