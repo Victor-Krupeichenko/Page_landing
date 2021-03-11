@@ -93,10 +93,10 @@ class AddComment(View):
             form.note = note
             form.save()
             messages.success(request, "Ваш комментарий добавлен")
-            return redirect(note.get_absolute_url())
+            return HttpResponse('<script>history.back();</script>')
         else:
             messages.error(request, 'Ошибка добовления комментария')
-            return redirect(note.get_absolute_url())
+            return HttpResponse('<script>history.back();</script>')
 
 
 def delete_messages(request, pk):
