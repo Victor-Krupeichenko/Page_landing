@@ -15,7 +15,7 @@ class NotesAddForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'tag': forms.SelectMultiple(attrs={'class': 'form-control'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
             'category': forms.Select(attrs={'class': 'form-control'}),
         }
 
