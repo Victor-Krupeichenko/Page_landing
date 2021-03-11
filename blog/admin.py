@@ -25,7 +25,7 @@ class TagsAdmin(admin.ModelAdmin):
 
 @admin.register(CommentNotes)
 class CommentNotesAdmin(admin.ModelAdmin):
-    list_display = ['name', 'short_text', 'created_at', 'is_published']
+    list_display = ['name', 'short_text', 'note', 'created_at', 'is_published']
     list_editable = ['is_published']
 
     def short_text(self, obj):
