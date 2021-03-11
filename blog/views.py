@@ -114,3 +114,10 @@ class CreatedNotes(CreateView):
         context = super(CreatedNotes, self).get_context_data(**kwargs)
         context['title'] = 'Создать запись'
         return context
+
+
+def delete_notes(request, pk):
+    note = Notes.objects.get(pk=pk)
+    note.delete()
+    messages.success(request, 'Запись удалена')
+    return redirect('blog')
