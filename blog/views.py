@@ -130,6 +130,6 @@ class NotesUpdate(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(NotesUpdate, self).get_context_data(**kwargs)
-        context['title'] = f"Редактировать запись: {Notes.objects.get(pk=self.kwargs['pk'])}"
+        context['title'] = f"Редактировать запись: {Notes.objects.get(slug=self.kwargs['slug'])}"
         context['update'] = True
         return context
