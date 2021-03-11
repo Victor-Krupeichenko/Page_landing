@@ -6,6 +6,11 @@
 
 {% block content %}
     <div class="container mt-5">
+    {% if update %}
+        <h2 class="text-center">{{ title }}</h2>
+    {% else %}
+        <h2 class="text-center">{{ title }}</h2>
+    {% endif %}
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
