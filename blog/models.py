@@ -26,7 +26,7 @@ class Notes(models.Model):
         super(Notes, self).save(*args, **kwargs)
 
     def get_no_parent(self):
-        return self.commentnotes_set.filter(parent__isnull=True)
+        return self.commentnotes_set.filter(parent__isnull=True, is_published=True)
 
     def get_absolute_url(self):
         return reverse_lazy('views_notes', kwargs={'slug': self.slug})
