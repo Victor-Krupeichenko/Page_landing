@@ -4,10 +4,18 @@ from autoslug import AutoSlugField
 from uuslug import uuslug
 
 
+def instance_title(instance):
+    return instance.title
+
+
+def slugify_value(value):
+    return value.replace(' ', '-')
+
+
 class Notes(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название')
     slug = AutoSlugField(max_length=150, unique=True, db_index=True, verbose_name='URLs',
-                         populate_from=lambda instance: instance.title, slugify=lambda value: value.replace(' ','-'))
+                         populate_from=instance_title, slugify=slugify_value)
     content = models.TextField(verbose_name='Текст статьи', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
