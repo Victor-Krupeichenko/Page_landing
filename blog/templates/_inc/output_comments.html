@@ -12,19 +12,22 @@
         <p class="card-text"><small class="text-muted">{{ item.created_at }}</small>
             <a class="answer-messages" href="#formMessages"
                onclick="addMessages('{{ item.name }}', '{{ item.id }}')">Ответить</a></p>
+
         {% include '_inc/modal_window_delete_comment.html' %}
-        {% for answer  in item.commentnotes_set.all %}
+
+        {% for item  in item.commentnotes_set.all %}
             <div class="border"></div>
             {% if item.photo %}
                 <img src="{{ item.photo.url }}" alt="..." class="float-right ml-2">
             {% else %}
                 <img src="{% static 'img/no_foto.png' %}" alt="" class="float-right ml-2">
             {% endif %}
-            <h6 class="card-title text-right">{{ answer.name }}</h6>
-            <p class="card-text text-right">{{ answer.text|linebreaks }}</p>
+            <h6 class="card-title text-right">{{ item.name }}</h6>
+            <p class="card-text text-right">{{ item.text|linebreaks }}</p>
             <p class="card-created text-right">
-            <small class="text-muted">{{ answer.created_at }}</small>
-            <a href="{% url 'messages_delete' answer.id %}">удалить</a>
+            <small class="text-muted">{{ item.created_at }}</small>
+
+            {% include '_inc/modal_window_delete_comment.html' %}
         {% endfor %}
     {% endfor %}
 </div>
