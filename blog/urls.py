@@ -10,6 +10,6 @@ urlpatterns = [
     path('commit-notes/<int:pk>/', AddComment.as_view(), name='commit_notes'),
     path('delete-messages/<int:pk>/', delete_messages, name='messages_delete'),
     path('notes/create-notes/', CreatedNotes.as_view(), name='created_notes'),
-    path('notes-delete/<int:pk>/', delete_notes, name='delete_notes'),
+    path('notes-delete/<slug:slug>/', delete_notes, name='delete_notes'),
     path('update-notes/<str:slug>/', NotesUpdate.as_view(), name='update_notes')
 ]
