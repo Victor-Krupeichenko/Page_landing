@@ -1,18 +1,19 @@
 <button type="button" class="btn btn-primary" data-toggle="modal"
-        data-target="#exampleModal">
+        data-target="#exampleModal-{{ item.id }}">
     <a href="{% url 'messages_delete' item.id %}"></a>удалить
 </button>
-<div class="modal fade" id="exampleModal" tabindex="-1"
-     aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1"
+     aria-labelledby="exampleModalLabel-{{ item.id }}"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">удалить комментарий пользователя: {{ item.name }}?</h5>
+                <h5 class="modal-title" id="exampleModalLabel-{{ item.id }}">удалить комментарий пользователя:
+                    {{ item.name }}?</h5>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger"><a
-                        href="{% url 'messages_delete' item.id %}">удалить</a></button>
+                <button type="submit" class="btn btn-danger">
+                    <a href="{% url 'messages_delete' item.id %}">удалить</a></button>
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                     Закрыть
                 </button>
