@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-primary" data-toggle="modal"
         data-target="#exampleModalNotes">
-    <a href="{% url 'delete_notes' notes.id %}"></a>удалить
+    <a href="{% url 'delete_notes' notes.slug %}"></a>удалить
 </button>
 <div class="modal fade" id="exampleModalNotes" tabindex="-1"
      aria-labelledby="exampleModalNotesLabel"
@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-danger"><a
-                        href="{% url 'delete_notes' notes.id %}">УДАЛИТЬ</a></button>
+                        href="{% url 'delete_notes' notes.slug %}">УДАЛИТЬ</a></button>
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                     НЕТ
                 </button>
