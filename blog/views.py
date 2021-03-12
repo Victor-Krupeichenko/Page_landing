@@ -116,8 +116,8 @@ class CreatedNotes(CreateView):
         return context
 
 
-def delete_notes(request, pk):
-    note = Notes.objects.get(pk=pk)
+def delete_notes(request, slug):
+    note = Notes.objects.get(slug=slug)
     note.delete()
     messages.success(request, 'Запись удалена')
     return redirect('blog')
