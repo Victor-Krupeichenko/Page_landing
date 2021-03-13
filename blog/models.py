@@ -85,6 +85,7 @@ class CommentNotes(models.Model):
                                verbose_name='Ответ на...')
     note = models.ForeignKey(Notes, on_delete=models.CASCADE, verbose_name='Запись')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
+    update_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
     def __str__(self):
