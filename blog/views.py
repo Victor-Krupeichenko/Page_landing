@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.db.models import F, Q
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
@@ -39,7 +40,7 @@ class NotesByCategories(ListView):
         return context
 
 
-class ViewsNotes(DetailView, MultipleObjectMixin):
+class DetailNote(DetailView, MultipleObjectMixin):
     model = Notes
     template_name = 'views_notes.html'
     context_object_name = 'notes'
@@ -47,7 +48,7 @@ class ViewsNotes(DetailView, MultipleObjectMixin):
 
     def get_context_data(self, **kwargs):
         object_list = Notes.get_no_parent(self.object)
-        context = super(ViewsNotes, self).get_context_data(object_list=object_list, **kwargs)
+        context = super(DetailNote, self).get_context_data(object_list=object_list, **kwargs)
         self.object.views = F('views') + 1
         self.object.save()
         self.object.refresh_from_db()
@@ -133,3 +134,12 @@ class NotesUpdate(UpdateView):
         context['title'] = f"Редактировать запись: {Notes.objects.get(slug=self.kwargs['slug'])}"
         context['update'] = True
         return context
+
+
+class CommentsUpdate(UpdateView):
+    model = CommentNotes
+    form_class = CommentForm
+    template_name = '_inc/form_update_comment.html'
+
+    def get_success_url(self):
+        return reverse_lazy('detail_notes', kwargs={'slug': self.object.note.slug})
