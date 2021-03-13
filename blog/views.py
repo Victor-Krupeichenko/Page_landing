@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.db.models import F, Q
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
@@ -140,6 +139,3 @@ class CommentsUpdate(UpdateView):
     model = CommentNotes
     form_class = CommentForm
     template_name = '_inc/form_update_comment.html'
-
-    def get_success_url(self):
-        return reverse_lazy('detail_notes', kwargs={'slug': self.object.note.slug})
