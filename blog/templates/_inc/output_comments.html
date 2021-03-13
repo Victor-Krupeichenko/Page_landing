@@ -14,6 +14,7 @@
                onclick="addMessages('{{ item.name }}', '{{ item.id }}')">Ответить</a></p>
 
         {% include '_inc/modal_window_delete_comment.html' %}
+        <a href="{% url 'comment_update' item.id %}">Обновить</a>
 
         {% for item  in item.commentnotes_set.all %}
             <div class="border"></div>
