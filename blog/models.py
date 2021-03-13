@@ -88,6 +88,9 @@ class CommentNotes(models.Model):
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
 
+    def get_absolute_url(self):
+        return reverse_lazy('detail_notes', kwargs={'slug': self.note.slug})
+
     def __str__(self):
         return f'{self.name} {self.note}'
 
