@@ -37,7 +37,7 @@ class Notes(models.Model):
         return self.commentnotes_set.filter(parent__isnull=True, is_published=True)
 
     def get_absolute_url(self):
-        return reverse_lazy('views_notes', kwargs={'slug': self.slug})
+        return reverse_lazy('detail_notes', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Запись'
@@ -91,6 +91,6 @@ class CommentNotes(models.Model):
         return f'{self.name} {self.note}'
 
     class Meta:
-        verbose_name = 'Коментарий'
-        verbose_name_plural = 'Коментарии'
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
         ordering = ['-created_at']
