@@ -95,3 +95,6 @@ class CommentNotes(models.Model):
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
         ordering = ['-created_at']
+
+    def get_absolute_url(self):
+        return reverse_lazy('detail_notes', kwargs={'slug': self.note.slug})
