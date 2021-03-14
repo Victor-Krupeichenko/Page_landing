@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.db.models import F, Q
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.base import View
@@ -93,10 +93,10 @@ class AddComment(View):
             form.note = note
             form.save()
             messages.success(request, "Ваш комментарий добавлен")
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            return redirect(note.get_absolute_url())
         else:
             messages.error(request, 'Ошибка добовления комментария')
-            return HttpResponse('<script>history.back();</script>')
+            return redirect(note.get_absolute_url())
 
 
 def delete_messages(request, pk):
