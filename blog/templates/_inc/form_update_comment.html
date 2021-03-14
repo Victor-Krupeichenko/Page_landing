@@ -11,5 +11,6 @@
         {{ form.as_p }}
         <button type="submit" class="btn btn-success">Обновить</button>
     </form>
+    <button type="button" class="btn btn-secondary"><a href="{{request.META.HTTP_REFERER|escape}}">Назад</a></button>
 </div>
 {% endblock %}
