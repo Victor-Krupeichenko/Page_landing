@@ -139,3 +139,8 @@ class CommentsUpdate(UpdateView):
     model = CommentNotes
     form_class = CommentForm
     template_name = '_inc/form_update_comment.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentsUpdate, self).get_context_data(**kwargs)
+        context['title'] = f"Обновить комментарий: {CommentNotes.objects.get(pk=self.kwargs['pk'])}"
+        return context
