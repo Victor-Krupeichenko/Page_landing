@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
 <div class="container mt-5">
+    <h2 class="comment-update text-center">Обновить комментарий: {{ title }}</h2>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
