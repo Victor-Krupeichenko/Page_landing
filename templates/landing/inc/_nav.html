@@ -8,7 +8,12 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Блог</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Регистрация</a></li>
+            {% if request.user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout_user' %}">Выход</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login_user' %}">Авторизация</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register_user' %}">Регистрация</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>
