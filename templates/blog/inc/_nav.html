@@ -17,7 +17,9 @@
             <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
             {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout_user' %}">Выход</a>
+                    <div class="user-name-title">Вы вошли как, {{ user.username|title }}
+                        <a href="{% url 'logout_user' %}" class="btn btn-primary btn-sm">Выход</a>
+                    </div>
                 </li>
             {% else %}
                 {% url 'login_user' as url_login_user %}
