@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import F, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -182,3 +182,7 @@ class UserLogin(LoginView):
         context = super(UserLogin, self).get_context_data(**kwargs)
         context['title'] = 'Авторизация'
         return context
+
+
+class UserLogout(LogoutView):
+    next_page = reverse_lazy('home')
