@@ -14,4 +14,5 @@ urlpatterns = [
     path('update-notes/<str:slug>/', NotesUpdate.as_view(), name='update_notes'),
     path('update_comment/<int:pk>/', CommentsUpdate.as_view(), name='comment_update'),
     path('register-user/', RegisterUserView.as_view(), name='register_user'),
+    path('login-user/', UserLogin.as_view(), name='login_user'),
 ]
