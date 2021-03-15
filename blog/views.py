@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.db.models import F, Q
@@ -153,12 +154,20 @@ class RegisterUserView(CreateView):
     model = User
     form_class = RegisterUserForm
     template_name = 'register_user.html'
-    success_url = reverse_lazy('login_user')
+    success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
         context = super(RegisterUserView, self).get_context_data(**kwargs)
         context['title'] = 'Регистрация пользователя'
         return context
+
+    def form_valid(self, form):
+        form_valid = super().form_valid(form)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password1']
+        aut_user = authenticate(username=username, password=password)
+        login(self.request, aut_user)
+        return form_valid
 
 
 class UserLogin(LoginView):
