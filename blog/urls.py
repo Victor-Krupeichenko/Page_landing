@@ -15,4 +15,5 @@ urlpatterns = [
     path('update_comment/<int:pk>/', CommentsUpdate.as_view(), name='comment_update'),
     path('register-user/', RegisterUserView.as_view(), name='register_user'),
     path('login-user/', UserLogin.as_view(), name='login_user'),
+    path('logout-user/', UserLogout.as_view(), name='logout_user'),
 ]
