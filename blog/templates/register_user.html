@@ -1,0 +1,25 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block navbar %}
+{% include 'blog/inc/_nav.html' %}
+{% endblock %}
+{% block content %}
+    <div class="title-register-user text-center mt-5 container">
+        <h2 class="title-register">{{ title }}</h2>
+        <div class="col-md-6 offset-3">
+            <form id="form_add_register_user" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button form="form_add_register_user" type="submit"
+                        class="btn btn-primary mt-3">Зарегистрироватся</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
