@@ -1,12 +1,14 @@
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.db.models import F, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
 from .models import Notes, BlogCategories, Tags, CommentNotes
-from .forms import CommentForm, NotesAddForm
+from .forms import CommentForm, NotesAddForm, RegisterUserForm
 
 
 class NotesViews(ListView):
@@ -143,4 +145,16 @@ class CommentsUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(CommentsUpdate, self).get_context_data(**kwargs)
         context['title'] = f"Обновить комментарий: {CommentNotes.objects.get(pk=self.kwargs['pk'])}"
+        return context
+
+
+class RegisterUserView(CreateView):
+    model = User
+    form_class = RegisterUserForm
+    template_name = 'register_user.html'
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context = super(RegisterUserView, self).get_context_data(**kwargs)
+        context['title'] = 'Регистрация пользователя'
         return context
