@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.forms import Textarea
 
 from .models import CommentNotes, Notes
@@ -31,3 +33,22 @@ class NotesAddForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['category'].empty_label = '--- Выберите категорию ---'
         self.fields['tag'].label = 'Теги'
+
+
+class RegisterUserForm(UserCreationForm):
+    username = forms.CharField(help_text='Только буквы, цифры и символы @/./+/-/_.',
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'name:'}))
+    password1 = forms.CharField(help_text='Ваш пароль должен содержать как минимум 8 символов',
+                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'password:'}))
+    password2 = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'confirm password:'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email:'}))
+
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2', 'email']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].label = ''
