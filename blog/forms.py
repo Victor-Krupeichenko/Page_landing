@@ -39,8 +39,8 @@ class RegisterUserForm(UserCreationForm):
     username = forms.CharField(help_text='Только буквы, цифры и символы @/./+/-/_.',
                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'name:'}))
     password1 = forms.CharField(help_text='Ваш пароль должен содержать как минимум 8 символов',
-                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'password:'}))
-    password2 = forms.CharField(widget=forms.TextInput(
+                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password:'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'placeholder': 'confirm password:'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email:'}))
 
