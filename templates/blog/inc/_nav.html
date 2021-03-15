@@ -15,6 +15,11 @@
                 href="{{  url_blog }}">Блог</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
+            {% url 'login_user' as url_login_user %}
+            <li class="nav-item">
+                <a class="nav-link {% if url_login_user == request.path %} active {% endif %}"
+                href="{{  url_login_user }}">Авторизация</a>
+            </li>
             {% url 'register_user' as url_register_user %}
             <li class="nav-item">
                 <a class="nav-link {% if url_register_user == request.path %} active {% endif %}"
