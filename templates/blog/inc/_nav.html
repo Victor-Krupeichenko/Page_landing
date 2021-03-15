@@ -10,21 +10,27 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
             <li class="nav-item">
-            {% url 'blog' as url_blog %}
+                {% url 'blog' as url_blog %}
                 <a class="nav-link {% if url_blog == request.path %} active {% endif %}"
-                href="{{  url_blog }}">Блог</a>
+                   href="{{ url_blog }}">Блог</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
-            {% url 'login_user' as url_login_user %}
-            <li class="nav-item">
-                <a class="nav-link {% if url_login_user == request.path %} active {% endif %}"
-                href="{{  url_login_user }}">Авторизация</a>
-            </li>
-            {% url 'register_user' as url_register_user %}
-            <li class="nav-item">
-                <a class="nav-link {% if url_register_user == request.path %} active {% endif %}"
-                href="{{  url_register_user }}">Регистрация</a>
-            </li>
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout_user' %}">Выход</a>
+                </li>
+            {% else %}
+                {% url 'login_user' as url_login_user %}
+                <li class="nav-item">
+                    <a class="nav-link {% if url_login_user == request.path %} active {% endif %}"
+                       href="{{ url_login_user }}">Авторизация</a>
+                </li>
+                {% url 'register_user' as url_register_user %}
+                <li class="nav-item">
+                    <a class="nav-link {% if url_register_user == request.path %} active {% endif %}"
+                       href="{{ url_register_user }}">Регистрация</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
