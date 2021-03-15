@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
 from django.db.models import F, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -8,7 +9,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
 from .models import Notes, BlogCategories, Tags, CommentNotes
-from .forms import CommentForm, NotesAddForm, RegisterUserForm
+from .forms import CommentForm, NotesAddForm, RegisterUserForm, UserLoginForm
 
 
 class NotesViews(ListView):
@@ -152,9 +153,23 @@ class RegisterUserView(CreateView):
     model = User
     form_class = RegisterUserForm
     template_name = 'register_user.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login_user')
 
     def get_context_data(self, **kwargs):
         context = super(RegisterUserView, self).get_context_data(**kwargs)
         context['title'] = 'Регистрация пользователя'
+        return context
+
+
+class UserLogin(LoginView):
+    template_name = 'login_user.html'
+    form_class = UserLoginForm
+    success_url = reverse_lazy('home')
+
+    def get_success_url(self):
+        return self.success_url
+
+    def get_context_data(self, **kwargs):
+        context = super(UserLogin, self).get_context_data(**kwargs)
+        context['title'] = 'Авторизация'
         return context
