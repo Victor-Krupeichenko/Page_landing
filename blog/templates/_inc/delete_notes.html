@@ -11,8 +11,10 @@
                 <h5 class="modal-title" id="exampleModalNotesLabel">Удалить запись: {{ notes.title }}?</h5>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger"><a
-                        href="{% url 'delete_notes' notes.slug %}">УДАЛИТЬ</a></button>
+                <form id="form_delete" action="{% url 'delete_notes' notes.slug %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger" id="form_delete">удалить</button>
+                </form>
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                     НЕТ
                 </button>
