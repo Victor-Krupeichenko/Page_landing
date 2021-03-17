@@ -1,3 +1,4 @@
+from braces.views import MessageMixin
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -6,7 +7,7 @@ from django.db.models import F, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.base import View
 from django.views.generic.list import MultipleObjectMixin
 from .models import Notes, BlogCategories, Tags, CommentNotes
@@ -120,11 +121,15 @@ class CreatedNotes(CreateView):
         return context
 
 
-def delete_notes(request, slug):
-    note = Notes.objects.get(slug=slug)
-    note.delete()
-    messages.success(request, 'Запись удалена')
-    return redirect('blog')
+class DeleteNotes(MessageMixin, DeleteView):
+    model = Notes
+    template_name = 'views_notes.html'
+    success_url = reverse_lazy('blog')
+    success_message = "Запись успешна удалена"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(MessageMixin, self).delete(request, *args, **kwargs)
 
 
 class NotesUpdate(UpdateView):
