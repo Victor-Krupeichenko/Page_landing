@@ -12,8 +12,10 @@
                     {{ item.name }}?</h5>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger">
-                    <a href="{% url 'messages_delete' item.id %}">удалить</a></button>
+                <form id="form_comment_delete" action="{% url 'messages_delete' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger" id="form_comment_delete">Удалить</button>
+                </form>
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                     Закрыть
                 </button>
