@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import F, Q
-from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -104,11 +103,17 @@ class AddComment(View):
             return redirect(note.get_absolute_url())
 
 
-def delete_messages(request, pk):
-    comment = CommentNotes.objects.get(pk=pk)
-    comment.delete()
-    messages.success(request, 'комментарий удалён')
-    return HttpResponse('<script>history.back();</script>')
+class DeleteCommit(MessageMixin, DeleteView):
+    model = CommentNotes
+    template_name = 'views_notes.html'
+    success_message = "Комментарий удалён"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(MessageMixin, self).delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse_lazy('detail_notes', kwargs={'slug': self.object.note.slug})
 
 
 class CreatedNotes(CreateView):
