@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse_lazy
 from autoslug import AutoSlugField
@@ -13,6 +14,7 @@ def slugify_value(value):
 
 
 class Notes(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
     title = models.CharField(max_length=150, verbose_name='Название')
     slug = AutoSlugField(max_length=150, unique=True, db_index=True, verbose_name='URLs',
                          populate_from=instance_title, slugify=slugify_value)
