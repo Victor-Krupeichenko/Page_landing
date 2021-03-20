@@ -125,6 +125,12 @@ class CreatedNotes(CreateView):
         context['title'] = 'Создать запись'
         return context
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
 
 class DeleteNotes(MessageMixin, DeleteView):
     model = Notes
